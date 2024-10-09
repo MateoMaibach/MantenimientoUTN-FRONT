@@ -1,0 +1,73 @@
+form{
+    padding: 20px;
+    border-radius: 15px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label{
+    font-family: 'tomorrow',sans-serif;
+    font-size: 12px;
+    font-weight:bold;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.login{
+    width: 500px;
+    height: 250px;
+    background-color: #DFDCD5;
+    flex-direction: column;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 20px;
+    
+}
+
+.login-button{
+    background-color: #D5FF67;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 12px;
+    border:none;
+    color:#000;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 120px;
+    align-self: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.5);
+    position: relative;
+    font-family: 'tomorrow';
+}
+
+.login-button:hover{
+    background-color: #d4eb3a;
+}
+.login-button:active{
+    box-shadow: none;
+    transform: translatey(2px);
+}
+
+.login-container{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 250px;
+}
+
+input {
+    padding:10px;
+    font-size: 14px;
+    border:none;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);   
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); 
+}
