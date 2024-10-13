@@ -1,0 +1,54 @@
+.footer {
+    background-color: #131210;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-family:'Tomorrow';
+    display: flex;
+    justify-content: space-between;      
+  }
+  
+  .footer-links {
+    list-style-type: none;
+    padding: 50px;
+    text-align: right;
+  }
+  
+  .footer-links li {
+    margin: 10px 0;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #D5FF67;
+  }
+  
+  .logo {
+    text-align: left;
+    padding: 50px;
+    line-height: 0.5;
+    
+    
+  }
+  .footer-logo  {
+    width: 200px;
+    height: 90px;
+    display: flex;
+    align-items: center;            
+    margin-bottom: 20px;    
+  }
+
+  .botom {
+    text-align: center;
+    background-color: #020202;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-family:'Tomorrow';
+  }
+  
