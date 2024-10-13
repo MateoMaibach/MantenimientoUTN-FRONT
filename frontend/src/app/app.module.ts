@@ -9,8 +9,8 @@ import { HeaderadmComponent } from './components/headeradm/headeradm.component';
 import { OperariosComponent } from './components/operarios/operarios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 
-import { HeaderComponent } from './header/header.component';
-import { OrdenTrabajoComponent } from './orden-trabajo/orden-trabajo.component';
+import { HeaderComponent } from './components/header/header.component';
+import { OrdenTrabajoComponent } from './components/orden-trabajo/orden-trabajo.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
@@ -20,18 +20,13 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
   declarations: [
     AppComponent,
     LoginComponent,
-
     HeaderadmComponent,
     OperariosComponent,
-    RegistroComponent 
-
+    RegistroComponent ,
     HeaderComponent,
-    OrdenTrabajoComponent 
-
+    OrdenTrabajoComponent, 
     FooterComponent,
-    BuscadorComponent 
-
-
+    BuscadorComponent,
   ],
   imports: [
     BrowserModule,
