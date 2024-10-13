@@ -1,0 +1,78 @@
+<div class="formularioOrdenTrabajo">
+    <div class="seccionPrincipalOrdenTrabajo">
+        <div class="tituloPrincipalOrdenTrabajo">ORDEN DE TRABAJO</div>
+        <span class="labelPrincipalOrdenTrabajo">N° ORDEN:</span>
+        <input class="inputOrdenTrabajo" type="text" placeholder="" />
+    </div>
+
+    <div class="contenedorDetallesOrdenTrabajo">
+        <div class="detallesOrdenTrabajoA">
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">CÓDIGO ÚNICO</div>
+                <input class="inputOrdenTrabajo" type="text" placeholder="" />
+            </div>
+
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">EDIFICIO</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let edificio of edificios" [value]="edificio">{{ edificio }}</option>
+                </select>
+            </div>
+
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">ACTIVO</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let activo of activos" [value]="activo">{{ activo }}</option>
+                </select>
+            </div>
+
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">TAREA</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let tarea of tareas" [value]="tarea">{{ tarea }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="detallesOrdenTrabajoB">
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">SECTOR</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let sector of sectores" [value]="sector">{{ sector }}</option>
+                </select>
+            </div>
+
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">PISO</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let piso of pisos" [value]="piso">{{ piso }}</option>
+                </select>
+            </div>
+
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">UBICACIÓN</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion">{{ ubicacion }}</option>
+                </select>
+            </div>
+
+            <div class="seccionOrdenTrabajo">
+                <div class="tituloOrdenTrabajo">OPERARIO</div>
+                <select class="selectOrdenTrabajo" name="enumSelect">
+                    <option value="" disabled selected hidden></option>
+                    <option *ngFor="let operario of operarios" [value]="operario">{{ operario }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="detallesOrdenTrabajoC">
+        <textarea class="inputListaTareas" placeholder=""></textarea>
+    </div>
+</div>
