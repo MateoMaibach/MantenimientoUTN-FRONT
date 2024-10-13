@@ -1,0 +1,38 @@
+html, body {
+  margin: 0; 
+  padding: 0; 
+  height: 100%; 
+}
+
+.app-header {
+  background-color: #ABA89F;
+  color: #131210;
+  padding: 6px 6px;
+  display: flex;
+  align-items: center;
+  font-family: 'Tomorrow', sans-serif;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.logo {
+  width: 50px;
+  margin-left: 1px;
+}
+
+.title-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0;
+  letter-spacing: 4px;
+  line-height: 3;
+}
