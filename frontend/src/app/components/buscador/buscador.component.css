@@ -1,0 +1,159 @@
+body {
+    font-family:'Tomorrow';
+    margin: 0;
+    padding: 0;
+    
+    
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #DFDCD5;
+    padding: 20px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    clip-path: polygon(0 0, 95% 0, 100% 14%, 100% 100%, 5% 100%, 0 87%);
+    
+}
+.search-bar {
+    display: flex;
+    align-items: center;
+    
+}
+.search-bar .search-box {
+    
+    border: 2px solid #D5FF67;
+    background-color: #ABA89F;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    
+}
+.search-bar .search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    padding-left: 10px;
+    background-color: transparent;
+}
+.search-bar .search-box input::placeholder {
+    color: #DFDCD5;
+}
+.search-bar .search-box .search-icon {
+    font-size: 20px;
+    color: #d4d4d4;
+}
+.table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 0 auto; 
+    background-color: #EBE8E1;
+    
+}
+.table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #EBE8E1;
+}
+
+.table td:nth-child(1) {
+    width: 30%;
+}
+.table td:nth-child(2) {
+    width: 20%;
+}
+.table td:nth-child(3) {
+    width: 30%;
+}
+.table td:nth-child(4) {
+    width: 20%;
+}
+.titlestable {
+    width: 95%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #DFDCD5;
+    margin: 0 auto; 
+    
+}
+.titlestable th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #DFDCD5;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.titlestable th:nth-child(1) {
+    width: 30%;
+}
+.titlestable th:nth-child(2) {
+    width: 20%;
+}
+.titlestable th:nth-child(3) {
+    width: 30%;
+}
+.titlestable th:nth-child(4) {
+    width: 20%;
+}
+.dropdown {
+    position: absolute;
+    top: 40px;
+    right: 70px;
+    background-color: #DFDCD5;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family:'Tomorrow';
+}
+.dropdown button {
+    background-color: #ABA89F;
+    border: none;
+    padding: 6px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family:'Tomorrow';
+}
+.dropdown button:hover {
+    background-color: #D5FF67;
+}
+.dropdown-content {
+    display: block;    
+    background-color: #d4d4d4;        
+    font-family:'Tomorrow';
+    
+}
+.dropdown-content a {
+    color: black;    
+    display: block;
+    text-decoration: none;
+}
+.dropdown-content a:hover {
+    background-color: #c4c4c4;
+    display: block;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+}
+.header .title {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    clip-path: polygon(92% 0%, 100% 35%, 100% 100%, 0 100%, 0 0);
+}
+.header .search-container {
+    flex-grow: 1;
+}
