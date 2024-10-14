@@ -11,10 +11,9 @@ import { RegistroComponent } from './components/registro/registro.component';
 
 import { HeaderComponent } from './components/header/header.component';
 import { OrdenTrabajoComponent } from './components/orden-trabajo/orden-trabajo.component';
-
 import { FooterComponent } from './components/footer/footer.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
-
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +26,7 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     OrdenTrabajoComponent, 
     FooterComponent,
     BuscadorComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,
