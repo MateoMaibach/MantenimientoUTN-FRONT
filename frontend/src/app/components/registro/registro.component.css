@@ -1,11 +1,11 @@
 form {
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 0px;
     width: 350px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+    }
 
 label {
     font-family: 'tomorrow', sans-serif;
@@ -17,13 +17,14 @@ label {
 
 .login {
     width: 500px;
-    height: 250px;
+    height: auto; 
     background-color: #DFDCD5;
     flex-direction: column;
     display: flex;
     justify-content: center; 
     align-items: center; 
-    border-radius: 20px;
+    border-radius: 0px;
+    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 100% 100%, 6% 100%, 0 92%, 0 0);
 }
 
 .login-button {
@@ -40,11 +41,11 @@ label {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.5);
     position: relative;
     font-family: 'tomorrow';
+    clip-path: polygon(84% 12%, 89% 41%, 89% 100%, 16% 100%, 10% 68%, 10% 11%);
 }
 
 .login-button:hover {
     background-color: #D5FF67;
-    ;
 }
 
 .login-button:active {
@@ -73,3 +74,35 @@ input:focus {
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
+
+.rol-label-container {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+
+.rol-label {
+    background-color: #131210; 
+    clip-path: polygon(92% 0%, 100% 35%, 100% 100%, 0 100%, 0 0); 
+    padding: 5px 30px; 
+    color: white;
+    font-family: 'tomorrow', sans-serif;
+    font-size: 12px; 
+    border-radius: 5px;
+}
+
+
+.rol-dropdown {
+    padding: 15px;
+    font-size: 14px;
+    border: none;
+    background-color: #DFDCD5; 
+    color: black; 
+    font-family: 'tomorrow', sans-serif; 
+    border-radius: 5px; 
+}
+
+.rol-dropdown:focus {
+    outline: none;
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2);
+}

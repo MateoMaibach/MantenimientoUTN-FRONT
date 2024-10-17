@@ -1,15 +1,21 @@
 <div class="login-container">
-    <div class="login">
-      <form>
-        <label for="username">USUARIO</label>
-        <input id="username" type="text" placeholder="Usuario" name="username" />
-  
-        <label for="password">CONTRASEÑA</label>
-        <input id="password" type="password" placeholder="Contraseña" name="password" />
-  
-        <button type="submit" class="login-button">REGISTRAR</button>
-      </form>
-    </div>
-  </div>
-  
+  <div class="login">
+    <form>
+      <label for="username">USUARIO</label>
+      <input id="username" type="text" placeholder="Usuario" name="username" />
 
+      <label for="password">CONTRASEÑA</label>
+      <input id="password" type="password" placeholder="Contraseña" name="password" />
+
+      <div class="rol-label-container"> 
+        <span class="rol-label">ROL</span>
+        <select id="role" name="role" class="rol-dropdown">
+          <option value="administrador">Administrador</option>
+          <option value="operario">Operario</option>
+        </select>
+      </div>
+
+      <button type="submit" class="login-button">REGISTRAR</button>
+    </form>
+  </div>
+</div>
