@@ -13,8 +13,8 @@ body {
     border-radius: 3px;
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    clip-path: polygon(0 0, 95% 0, 100% 14%, 100% 100%, 5% 100%, 0 87%);
-    
+    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 100% 100%, 6% 100%, 0 92%, 0 0);
+    height: 600px;  
 }
 .search-bar {
     display: flex;
@@ -97,28 +97,6 @@ body {
 .titlestable th:nth-child(4) {
     width: 20%;
 }
-.dropdown {
-    position: absolute;
-    top: 20px;
-    right: 70px;
-    background-color: #DFDCD5;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family:'Tomorrow';
-    font-weight: bold;
-}
-
-.dropdown-content {
-    display: block;    
-    background-color: #ABA89F;        
-    font-family:'Tomorrow';
-    border: none;
-    padding: 6px 30px;
-    font-size: 16px;
-    width: 100%;
-    
-}
 
 .header {
     display: flex;
@@ -136,4 +114,17 @@ body {
 }
 .header .search-container {
     flex-grow: 1;
+}
+
+.info {
+    width: 100%;
+    max-width: 100%;
+    height: 450px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #EBE8E1;
+    background-color: #EBE8E1;
+    resize: none;
+    margin: 50px auto 0 auto;
+    box-sizing: border-box;
 }
