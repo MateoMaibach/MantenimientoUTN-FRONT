@@ -12,7 +12,7 @@ body {
     border-radius: 3px;
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 6% 100%, 0 91%);
+    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 100% 100%, 6% 100%, 0 92%, 0 0);
     height: 600px;
     }
 
@@ -105,4 +105,16 @@ body {
     font-weight: bold;
     margin-right: 20px;
     clip-path: polygon(92% 0%, 100% 35%, 100% 100%, 0 100%, 0 0);
+}
+.info {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #EBE8E1;
+    background-color: #EBE8E1;
+    resize: none;
+    margin: 50px auto 0 auto;
+    box-sizing: border-box;
 }
