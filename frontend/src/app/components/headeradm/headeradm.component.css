@@ -13,20 +13,16 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #ABA89F;
-  padding: 6px 6px; 
+  padding: 6px 10px; /* Ajuste de padding */
   font-family: 'Tomorrow', sans-serif;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed; 
-  top: 0; 
-  left: 0; 
+  position: relative; /* Cambiado de fixed a relative */
   width: 100%; 
   z-index: 1000; 
-  
 }
 
 .logo img {
   width: 50px;
-  margin-left: 1px 
 }
 
 .navbar ul {
@@ -109,6 +105,4 @@ body {
   background-color: #D5FF67;
   border-radius: 50%;
   padding: 2px; 
-  border: 0px solid #D5FF67; 
 }
-

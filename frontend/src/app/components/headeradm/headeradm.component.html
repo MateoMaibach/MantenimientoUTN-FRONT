@@ -4,11 +4,11 @@
   </div>
   <nav class="navbar">
     <ul>
-      <li><a href="#">ACTIVOS</a></li>
-      <li><a href="#">HISTORIAL</a></li>
-      <li><a href="#">ORDENES DE TRABAJO</a></li>
-      <li><a href="#">OPERARIOS</a></li>
-      <li><a href="#" class="registrar">REGISTRAR</a></li>
+      <li><a [routerLink]="['/dashboard']">ACTIVOS</a></li>
+      <li><a [routerLink]="['/dashboard-historial']">HISTORIAL</a></li>
+      <li><a [routerLink]="['/dashboard-ot']">ORDENES DE TRABAJO</a></li>
+      <li><a [routerLink]="['/dashboard-op']">OPERARIOS</a></li>
+      <li><a class="registrar" [routerLink]="['/register']" >REGISTRAR</a></li>
     </ul>
   </nav>
   <div class="menu-icon">

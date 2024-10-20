@@ -5,17 +5,14 @@ html, body {
 }
 
 .app-header {
-  background-color: #ABA89F;
-  color: #131210;
-  padding: 6px 6px;
-  display: flex;
-  align-items: center;
-  font-family: 'Tomorrow', sans-serif;
+  background-color: #ABA89F; 
+  color: #131210; 
+  padding: 6px 6px; 
+  display: flex; 
+  align-items: center; 
+  font-family: 'Tomorrow', sans-serif; 
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  z-index: 10; 
 }
 
 .logo {
@@ -24,7 +21,7 @@ html, body {
 }
 
 .title-container {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -35,4 +32,5 @@ h1 {
   margin: 0;
   letter-spacing: 4px;
   line-height: 3;
+  
 }
