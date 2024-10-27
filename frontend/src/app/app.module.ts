@@ -25,6 +25,8 @@ import { DashboardHistorialComponent } from './pages/dashboard-historial/dashboa
 import { DashboardOtComponent } from './pages/dashboard-ot/dashboard-ot.component';
 import { DashboardOpComponent } from './pages/dashboard-op/dashboard-op.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { DashboardInicioComponent } from './pages/dashboard-inicio/dashboard-inicio.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { RegisterComponent } from './pages/register/register.component';
     DashboardOtComponent,
     DashboardOpComponent,
     RegisterComponent,
+    InicioComponent,
+    DashboardInicioComponent,
   ],
   imports: [
     BrowserModule,
