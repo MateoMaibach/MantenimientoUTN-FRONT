@@ -4,7 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+
+
+
 import { CookieService } from 'ngx-cookie-service';  
+
 import { LoginComponent } from './components/login/login.component';
 import { HeaderadmComponent } from './components/headeradm/headeradm.component';
 import { OperariosComponent } from './components/operarios/operarios.component';
@@ -45,7 +49,7 @@ import { RegisterComponent } from './pages/register/register.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule   
   ],
   providers: [CookieService],  
   bootstrap: [AppComponent]
