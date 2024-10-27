@@ -7,6 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:3000';
-  
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
+
+  login(username: string, password: string): Observable<any> {
+    const body = { username, password };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}/login`, body, { headers });
+  }
 }

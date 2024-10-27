@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OperariosService {
+
   private apiUrl = 'http://localhost:3000/api/operarios';
   
   constructor(private http: HttpClient) {}
@@ -15,3 +16,6 @@ export class OperariosService {
     return this.http.get(`http://localhost:3000/api/operarios`);
   }
 }
+
+  
+

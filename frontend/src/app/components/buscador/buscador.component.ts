@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
-  styleUrl: './buscador.component.css'
+  styleUrls: ['./buscador.component.css']
 })
 export class BuscadorComponent {
-
+  
 }
+  
 
-      
-        
+
+

@@ -14,22 +14,26 @@
 
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">EDIFICIO</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedEdificio">
+                  <option value="" disabled selected hidden>Seleccione un edificio</option>
+                  <option *ngFor="let edificio of edificios" [value]="edificio.id_edificio">{{ edificio.nombre }}</option>
                 </select>
-            </div>
+              </div>
+              
 
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">ACTIVO</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedActivo">
+                    <option value="" disabled selected hidden>Seleccione un activo</option>
+                    <option *ngFor="let activo of activos" [value]="activo.id_activo">{{ activo.tipo_activo }}</option>
                 </select>
             </div>
 
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">TAREA</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedTarea">
+                    <option value="" disabled selected hidden>Seleccione una tarea</option>
+                    <option *ngFor="let tarea of tareas" [value]="tarea.id_tarea">{{tarea.descripcion}}</option>
                 </select>
             </div>
         </div>
@@ -37,29 +41,33 @@
         <div class="detallesOrdenTrabajoB">
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">SECTOR</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedSector">
+                    <option value="" disabled selected hidden>Seleccione un sector</option>
+                    <option *ngFor="let sector of sectores" [value]="sector.id_sector">{{sector.nombre}}</option>
                 </select>
             </div>
 
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">PISO</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedPiso">
+                    <option value="" disabled selected hidden>Seleccione un piso</option>
+                    <option *ngFor="let piso of pisos" [value]="piso.id_piso">{{piso.nombre}}</option>
                 </select>
             </div>
 
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">UBICACIÓN</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedUbicacion">
+                    <option value="" disabled selected hidden>Seleccione una ubicacion</option>
+                    <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">{{ubicacion.descripcion}}</option>
                 </select>
             </div>
 
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">OPERARIO</div>
-                <select class="selectOrdenTrabajo" name="enumSelect">
-                    <option value="" disabled selected hidden></option>
+                <select class="selectOrdenTrabajo" [(ngModel)]="selectedOperario">
+                    <option value="" disabled selected hidden>Seleccione un operario</option>
+                    <option *ngFor="let operarios of operarios" [value]="operarios.id_operario">{{operarios.nombre}} {{operarios.apellido}}</option>
                 </select>
             </div>
         </div>

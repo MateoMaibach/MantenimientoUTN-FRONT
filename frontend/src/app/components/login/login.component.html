@@ -1,12 +1,29 @@
 <div class="login-container">
     <div class="login">
-        <form>
+        <form (submit)="login()">
             <label for="username">USUARIO</label>
-            <input id="username" type="text" placeholder="Usuario" [(ngModel)]="username" name="username"/>
+            <input 
+                id="username" 
+                type="text" 
+                placeholder="Usuario" 
+                [(ngModel)]="username" 
+                name="username" 
+                required 
+            />
 
-            <label for="password">CONTRASEÑA</label><input id="password" type="password" placeholder="Contraseña"[(ngModel)]="password" name="password" />
+            <label for="password">CONTRASEÑA</label>
+            <input 
+                id="password" 
+                type="password" 
+                placeholder="Contraseña" 
+                [(ngModel)]="password" 
+                name="password" 
+                required 
+            />
 
             <button type="submit" class="login-button">LOGIN</button>
         </form>
+     
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
 </div>
