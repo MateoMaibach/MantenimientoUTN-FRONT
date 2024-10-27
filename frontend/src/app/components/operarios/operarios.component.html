@@ -1,11 +1,14 @@
 <div class="container">
   <div class="operarios-panel">
-     <button class="operarios-button">OPERARIOS</button>
+    <button class="operarios-button">OPERARIOS</button>
     <select class="operarios-dropdown">
-      <option value="" disabled selected></option> 
+      <option *ngFor="let operario of operarios" [value]="operario.id_operario">
+        {{ operario.nombre }} - {{ operario.apellido }}
+      </option>
+      <option value="" disabled selected>Seleccione un operario</option>
     </select>
-  </div> 
-  
+  </div>
+
   <div class="tareas-panel">
     <div class="tareas-header">
       <div class="header-item">TAREAS ASIGNADAS</div>
@@ -13,12 +16,9 @@
       <div class="header-item">OBSERVACIONES</div>
     </div>
     <div class="tareas-content">
-      <div class="blank-box">
-      </div> 
-      <div class="estado-box">
-      </div> 
-      <div class="observaciones-box">
-      </div>
+      <div class="blank-box"></div>
+      <div class="estado-box"></div>
+      <div class="observaciones-box"></div>
     </div>
   </div>
   <div class="content-below"></div>

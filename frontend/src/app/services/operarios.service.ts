@@ -8,10 +8,14 @@ import { Observable } from 'rxjs';
 export class OperariosService {
 
   private apiUrl = 'http://localhost:3000/api/operarios';
+  
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getOperario(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
+  
+  getOperarios(): Observable<any> {
+    return this.http.get(`http://localhost:3000/api/operarios`);
   }
 }
+
+  
+
