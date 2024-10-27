@@ -1,19 +1,23 @@
 <div class="login-container">
   <div class="login">
-    <form>
+    <form (ngSubmit)="register()">
       <label for="username">USUARIO</label>
-      <input id="username" type="text" placeholder="Usuario" name="username" />
+      <input id="username" type="text" placeholder="Usuario" [(ngModel)]="username" name="username" required />
 
       <label for="password">CONTRASEÑA</label>
-      <input id="password" type="password" placeholder="Contraseña" name="password" />
+      <input id="password" type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required />
 
       <div class="rol-label-container"> 
         <span class="rol-label">ROL</span>
-        <select id="role" name="role" class="rol-dropdown">
+        <select id="role" [(ngModel)]="role" name="role" class="rol-dropdown" required>
+          <option value="">Seleccione un rol</option> <!-- Valor por defecto vacío -->
           <option value="administrador">Administrador</option>
           <option value="operario">Operario</option>
         </select>
       </div>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div> <!-- Mensaje de éxito -->
 
       <button type="submit" class="login-button">REGISTRAR</button>
     </form>
