@@ -119,7 +119,7 @@ export class OrdenTrabajoComponent implements OnInit {
   }
 
   cargarOperarios(): void {
-    this.operariosService.getOperario().subscribe(
+    this.operariosService.getOperarios().subscribe(
       (data: any[]) => {
         this.operarios = data;
       },
