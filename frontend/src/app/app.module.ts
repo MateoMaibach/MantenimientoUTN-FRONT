@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { HeaderadmComponent } from './components/headeradm/headeradm.component';
@@ -47,7 +47,8 @@ import { RegisterComponent } from './pages/register/register.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
