@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,21 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  errorMessage: string = '';  
 
-  onLogin() {
-    console.log('Usuario:', this.username);
-    console.log('Contraseña:', this.password);
-    
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login() {
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
+        console.log('Login exitoso', response);
+        this.authService.setToken(response.token); 
+        this.router.navigate(['/dashboard']);  
+      },
+      error => {
+        console.error('Error en el login', error);
+        this.errorMessage = 'Usuario o contraseña incorrectos.'; 
+      }
+    );
   }
 }
