@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Data Table</title>
+    
 </head>
 <body>
     <div class="container">
@@ -11,23 +12,78 @@
                 <div class="button eliminar">ELIMINAR</div>
                 <div class="button editar">EDITAR</div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ACTIVOS</th>
-                        <th>EDIFICIO</th>
-                        <th>SECTOR</th>
-                        <th>UBICACION</th>
-                        <th>PISO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of ">
-                        
-                    </tr>
-                </tbody>
-            </table>
+            <div class="scroll-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ACTIVOS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let activo of activos">
+                            <td>{{ activo.tipo_activo }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="scroll-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>EDIFICIO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let edificio of edificios">
+                            <td>{{ edificio.nombre }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="scroll-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SECTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sector of sectores">
+                            <td>{{ sector.nombre }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="scroll-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UBICACION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ubicacion of ubicaciones">
+                            <td>{{ ubicacion.descripcion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="scroll-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PISO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let piso of pisos">
+                            <td>{{ piso.nombre }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
