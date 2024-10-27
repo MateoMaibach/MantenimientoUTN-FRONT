@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { CookieService } from 'ngx-cookie-service';  
 import { LoginComponent } from './components/login/login.component';
 import { HeaderadmComponent } from './components/headeradm/headeradm.component';
 import { OperariosComponent } from './components/operarios/operarios.component';
@@ -23,14 +22,13 @@ import { DashboardOtComponent } from './pages/dashboard-ot/dashboard-ot.componen
 import { DashboardOpComponent } from './pages/dashboard-op/dashboard-op.component';
 import { RegisterComponent } from './pages/register/register.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderadmComponent,
     OperariosComponent,
-    RegistroComponent ,
+    RegistroComponent,
     HeaderComponent,
     OrdenTrabajoComponent, 
     FooterComponent,
@@ -49,7 +47,7 @@ import { RegisterComponent } from './pages/register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
