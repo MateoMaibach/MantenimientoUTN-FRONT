@@ -1,21 +1,31 @@
-<header class="header">
-  <div class="logo">
-    <img src="assets/utn.png" alt="Logo">
+<div class="header">
+   <!-- Navbar Logo a la izquierda -->
+   <div class="container-logo">
+    <nav class="navbar-logo">
+      <img src="assets/utn.png" alt="Logo" class="logo-image"> 
+    </nav>
   </div>
-  <nav class="navbar">
-    <ul>
-      <li><a [routerLink]="['/dashboard']">ACTIVOS</a></li>
-      <li><a [routerLink]="['/dashboard-historial']">HISTORIAL</a></li>
-      <li><a [routerLink]="['/dashboard-ot']">ORDENES DE TRABAJO</a></li>
-      <li><a [routerLink]="['/dashboard-op']">OPERARIOS</a></li>
-      <li><a class="registrar" [routerLink]="['/register']" >REGISTRAR</a></li>
-    </ul>
-  </nav>
-  <div class="menu-icon">
-    <div class="hamburger"></div>
+  <div class="container"> <!-- Contenedor que centra el navbar principal -->
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-link" [routerLink]="['/dashboard']">ACTIVOS</a></li>
+        <li><a class="nav-link" [routerLink]="['/dashboard-historial']">HISTORIAL</a></li>
+        <li><a class="nav-link" [routerLink]="['/dashboard-ot']">ORDENES DE TRABAJO</a></li>
+        <li><a class="nav-link" [routerLink]="['/dashboard-op']">OPERARIOS</a></li>
+        <li><a class="nav-link-registrar" [routerLink]="['/register']">REGISTRAR</a></li>
+      </ul>
+    </nav>
   </div>
-  <div class="profile-icon">
-    <img src="assets/logo cuenta.png" alt="Perfil" class="profile-image">
-  </div>
-</header>
+ 
 
+  <!-- Navbar Menu a la derecha -->
+  <div class="container-menu">
+    <nav class="navbar-menu">
+      <button class="icon-button">⚙️</button> <!-- Icono o botón -->
+      <button class="icon-button">👤</button>      
+    </nav>
+  </div>
+
+  
+  
+</div>

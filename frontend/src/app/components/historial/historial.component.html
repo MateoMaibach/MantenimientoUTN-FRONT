@@ -1,36 +1,25 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial</title>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="title">HISTORIAL</div>    
+<div class="container">
+    <div class="operarios-panel">
+      <div class="operarios-button">HISTORIAL</div>
+      <select class="operarios-dropdown">
+        <option *ngFor="let operario of " [value]="">
+          
+        </option>
+        <option value="" disabled selected></option>
+      </select>
     </div>
-        <table class="titlestable">
-            <thead>
-                <tr>
-                    <th>Activo</th>
-                    <th>ID</th>
-                    <th>Tag</th>
-                    <th>Historial</th>
-                </tr>
-            </thead>
-        </table>    
-        <div class="titlestable">
-            <textarea class="info" placeholder=""></textarea>        
-        </div>
-        <div class="dropdown">            
-            <select class="dropdown-content">
-              <option value=></option>
-              <option value=></option>
-              <option value=></option>
-              <option value=></option>
-            </select>
-          </div> 
+  
+    <div class="tareas-panel">
+      <div class="tareas-header">
+        <div class="header-item">ORDEN N°</div>
+        <div class="header-item estado-header">OPERARIO</div>
+        <div class="header-item">OBSERVACIONES</div>
+      </div>
+      <div class="tareas-content">
+        <div class="blank-box"></div>
+        <div class="estado-box"></div>
+        <div class="observaciones-box"></div>
+      </div>
     </div>
-    
+    <div class="content-below"></div>
+  </div>
