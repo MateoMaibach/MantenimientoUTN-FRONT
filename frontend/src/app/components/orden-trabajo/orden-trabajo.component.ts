@@ -7,6 +7,9 @@ import { PisoService } from '../../services/piso.service';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { OperariosService } from '../../services/operarios.service';
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-orden-trabajo',
   templateUrl: './orden-trabajo.component.html',
@@ -21,7 +24,7 @@ export class OrdenTrabajoComponent implements OnInit {
   pisos: any[] = [];
   ubicaciones: any[] = [];
   operarios: any[] = [];
-  
+
   selectedEdificio: any;
   selectedActivo: any;
   selectedTarea: any;
@@ -29,8 +32,6 @@ export class OrdenTrabajoComponent implements OnInit {
   selectedPiso: any;
   selectedUbicacion: any;
   selectedOperario: any;
-
-
 
   constructor(
     private edificioService: EdificioService,
@@ -127,5 +128,61 @@ export class OrdenTrabajoComponent implements OnInit {
         console.error('Error al obtener los operarios:', error);
       }
     );
+  }
+
+  // Método para generar PDF
+  generatePDF() {
+    const data = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
+
+    if (data) {
+      html2canvas(data).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('Orden_Trabajo.pdf');
+      });
+    }
+  }
+
+  // Método para imprimir el formulario
+  printForm() {
+    const printContents = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
+    const iframe = document.createElement('iframe');
+    
+    // Estilo del iframe
+    iframe.style.position = 'absolute';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = 'none';
+    document.body.appendChild(iframe);
+    
+    const doc = iframe.contentWindow!.document;
+    doc.open();
+    doc.write(`
+      <html>
+        <head>
+          <title>Print</title>
+          <style>
+            body {
+              margin: 0;
+              padding: 20px;
+              font-family: Arial, sans-serif;
+            }
+            /* Aquí puedes añadir más estilos para el formulario si es necesario */
+          </style>
+        </head>
+        <body>
+          ${printContents.innerHTML}
+        </body>
+      </html>
+    `);
+    doc.close();
+    iframe.contentWindow!.focus();
+    iframe.contentWindow!.print();
+    document.body.removeChild(iframe);
   }
 }
