@@ -1,108 +1,123 @@
-* {
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
-
-body {
-  margin: 0; 
-}
-
-.header {
+.header{
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #ABA89F;
-  padding: 6px 10px; /* Ajuste de padding */
-  font-family: 'Tomorrow', sans-serif;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative; /* Cambiado de fixed a relative */
-  width: 100%; 
-  z-index: 1000; 
+}
+.container { /* Asegúrate de que tu navbar esté dentro de un contenedor */
+  display: flex; /* Habilita Flexbox en el contenedor */
+  
+  position: relative; /* Para que los elementos hijos se posicionen correctamente */
 }
 
-.logo img {
-  width: 50px;
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+  
+  height: 50px;
+  width: 1000px; /* Puedes ajustar este valor o usar un porcentaje */
+  position: relative; /* Si quieres que esté fijo en la parte superior */
+  top: 25px;
+  font-family: 'Tomorrow', sans-serif;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  
+}
+
+.navbar a.active {
+  background-color: #E5FF4F;
+  color: #000000;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
   margin: 0;
-  padding: 0;
+  
 }
 
-.navbar ul li {
-  margin-right: 25px; 
+.container-logo {
+  position: relative; /* Cambiado a relative */
+  top: 25px; /* Alineado con el navbar principal */
+  right: 5px; /* Espacio desde el borde derecho */
+  
 }
 
-.navbar ul li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 15px; 
-  font-weight: 600;
-  line-height: 28px; 
-  letter-spacing: 0.1em; 
-  text-align: left;
-  padding: 8px 15px; 
-  transition: color 0.3s ease;
-}
-
-.navbar ul li a:hover {
-  color: #D5FF67;
-}
-
-.navbar ul li a.registrar {
-  background-color: #D5FF67;
-  color: #333;
-  padding: 8px 25px; 
-  border-radius: 30px;
-  clip-path: polygon(84% 12%, 89% 41%, 89% 100%, 16% 100%, 10% 68%, 10% 11%);
-}
-
-.navbar ul li a.registrar:hover {
-  background-color: #c4f55a;
-}
-
-.hamburger {
-  width: 35px; 
-  height: 25px; 
+.navbar-logo {
   display: flex;
+  align-items: center; /* Centra verticalmente */
+  height: 50px; /* Igual a la altura del navbar */
+  background-color: #FFFFFF; /* Color de fondo similar */
+  border-radius: 0 25px 25px 0;
+  padding: 0 10px; /* Espaciado interno */
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+  width: 60px;
+  justify-content: center;
+}
+
+.logo-image {
+  max-height: 70%; /* Asegura que el logo no se exceda en altura */
+  
+  
+}
+
+.container-menu {
+  position: relative; /* Mantiene la navbar-menu en la parte superior derecha */
+  top: 25px; /* Alineado con el navbar principal */
+  right: 15px; /* Espacio desde el borde derecho */
+  justify-content: right;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  height: 50px; /* Igual a la altura del navbar */
+  background-color: #FFFFFF; /* Color de fondo similar */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 0 10px; /* Espaciado interno */
+  width: 150px;
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
-  flex-direction: column;
-  cursor: pointer;
 }
 
-.hamburger::before,
-.hamburger::after,
-.hamburger div {
-  content: '';
-  height: 4px; 
-  background-color: #D5FF67;
-  border-radius: 2px;
+.icon-button {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 20px; /* Tamaño del icono */
+  margin-right: 10px; /* Espacio entre el icono y el contenido adicional */
+}
+.navbar .nav-link {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  border-radius: 25px;
 }
 
-.hamburger::before,
-.hamburger::after {
-  display: block;
-  width: 100%;
-  margin: 3px 0; 
+.navbar .nav-link:hover {
+  background: linear-gradient(135deg, #b7ff00, #a0dc07);
+  
+  color: #ffffff;
 }
 
-.hamburger div {
-  width: 100%;
+.navbar .nav-link-registrar{
+  color: #ffffff;
+  background: linear-gradient(to bottom, #545454, #2d2d2d);
+ 
 }
-
-.profile-icon {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.profile-icon img.profile-image {
-  width: 35px; 
-  height: 35px; 
-  background-color: #D5FF67;
-  border-radius: 50%;
-  padding: 2px; 
+.navbar .nav-link-registrar:hover {
+  background: linear-gradient(135deg, #b7ff00, #8cc300);
+  
+  color: #000;
 }

@@ -1,64 +1,64 @@
-body {
-    font-family: Tomorrow;
-   
-}
+
 .container {
-    width: 80%;
-    margin: 50px auto;
-    background-color: #e5e1dc;
-    margin-top: 0px;
-    position: relative;
-    padding: 20px;
-    box-shadow: 10px 10px 0px 0px #000000;
-    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 100% 100%, 6% 100%, 0 92%, 0 0);
+    width: 1200px;
     height: 600px;
+    margin: 50px auto;
+    background: linear-gradient(to bottom, #fffbf1, #c9c7c1);
+    margin-top: 30px;
+    position: relative;
+    padding: 20px;     
+    top: -30px; 
+    border-radius: 25px;         
+    font-family: Tomorrow;         
+    display: flex;
+    box-shadow: 10px 10px 30px 0 rgba(0, 0, 0, 0.8);
+    
 }
 .button {
     width: 100px;
-    height: 50px;
+    height: 100px;
     margin-bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    clip-path: polygon(92% 0%, 100% 35%, 100% 100%, 0 100%, 0 0);
-    margin-top: 40px;
-    box-shadow: 5px 5px 0px 0px #000000;
+    border-radius: 20px; 
+    background: linear-gradient(to bottom, #545454, #2d2d2d);
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+    
     cursor: pointer;
 }
-.button.agregar {
-    background-color: #D5FF67;
-}
-.button.eliminar {
-    background-color: #ff4c4c;
-}
-.button.editar {
-    background-color: #b3b3b3;
+.button:hover{
+    background: linear-gradient(135deg, #c3fa37, #D5FF67);
+    color: #000;
 }
 .buttons {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
+    color:#FFFFFF;
 }
 .table-container {
     display: flex;
     flex-direction: row;
     margin-top: 40px;
+    right: 0px;
 }
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 0px;
     height: 500px;
+    
 }
 th, td {
-    background-color:#f2f2f2;
+    background-color:white;
 
     padding: 10px;
     text-align: center;
 }
 th {
-    background-color: #f2f2f2;
+    background-color: white;
     font-weight: bold;
 }
 .scroll-container {

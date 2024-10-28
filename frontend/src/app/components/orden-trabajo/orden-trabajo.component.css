@@ -1,22 +1,19 @@
 * {
     font-family: 'Tomorrow', sans-serif;
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 15px;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-}
 
 .formularioOrdenTrabajo {
-    width: 80%;
-    height: 600px;
+    width: 1200px;
+    height: 620px;
     margin: 20px auto;
     padding: 15px;
-    border-radius: 8px;
-    background-color: #DFDCD5;
-    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 100% 100%, 6% 100%, 0 92%, 0 0);
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #fffbf1, #c9c7c1);
+    box-shadow: 10px 10px 30px 0 rgba(0, 0, 0, 0.8);
+    
 }
 
 .seccionPrincipalOrdenTrabajo {
@@ -41,7 +38,7 @@ body {
 }
 
 .detallesOrdenTrabajoC {
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: 40px;
 }
 
@@ -50,11 +47,12 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    background-color: #131210;
-    color: #EBE8E1;
+    background: linear-gradient(to bottom, #545454, #2d2d2d);
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
     padding: 10px 10px;
     width: 180px;
-    clip-path: polygon(0 0, 90% 0, 100% 30%, 100% 100%, 100% 100%, 0 100%, 0 0);
+    border-radius: 25px;
     margin-right: 20px;
 }
 
@@ -66,31 +64,30 @@ body {
 
 .tituloOrdenTrabajo {
     font-weight: bold;
-    background-color: #131210;
-    color: #EBE8E1;
+    background: linear-gradient(to bottom, #545454, #2d2d2d);
+    color: #FFFFFF;
     padding: 10px 10px;
     width: 130px;
-    clip-path: polygon(0 0, 90% 0, 100% 30%, 100% 100%, 100% 100%, 10% 100%, 0 70%, 0 0);
+    border-radius: 25px;
     text-align: center;
-    border: 1px solid #9173D1;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
 }
 
 .inputOrdenTrabajo,
 .selectOrdenTrabajo {
     margin-left: 20px;
     padding: 8px;
-    border: 0.1px solid #EBE8E1;
-    background-color: #EBE8E1;
-    font-size: 0.75rem;
+    border-radius: 25px;
+    background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
+    font-size: 14px;
+    font-weight: bold;
     width: 100%;
     max-width: 200px;
+    box-shadow:inset 0 7px 10px rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
-.inputOrdenTrabajo::placeholder {
-    font-size: 0.65rem;
-    color: #131210;
-    opacity: 0.7;
-}
+
 
 .selectOrdenTrabajo {
     -webkit-appearance: none;
@@ -114,17 +111,19 @@ body {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #EBE8E1;
-    background-color: #EBE8E1;
+    background-color:#f2f2f2;
     resize: none;
     margin: 10px auto 0 auto;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 select {
-    border: 1px solid #ABA89F;
-    background-color: #ABA89F;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
     color: #000000;
-    clip-path: polygon(0 0, 90% 0, 100% 30%, 100% 100%, 100% 100%, 0 100%, 0 0);
+    box-shadow:inset 0 7px 10px rgba(0, 0, 0, 0.2);
+    
 }
 
 select:hover {
@@ -133,6 +132,33 @@ select:hover {
 }
 
 select:focus {
-    border: 1px solid #ABA89F;
+    background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
     outline: none;
+    border-radius: 25px;
+}
+
+.buttonsub{
+    margin-top: 15px;
+    margin-left: 850px;
+    display: flex;
+    gap: 20px;    
+    
+}
+.button{
+    font-weight: bold;
+    background: linear-gradient(to bottom, #545454, #2d2d2d);
+    color: #FFFFFF;
+    padding: 10px 10px;
+    width: 130px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+   
+   
+}
+.button:hover {
+    background: linear-gradient(135deg, #b7ff00, #8cc300);
+    box-shadow: 0px 0px 6px #b7ff00;
+    color: #000000;
 }

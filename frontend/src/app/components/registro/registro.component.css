@@ -16,36 +16,39 @@ label {
 }
 
 .login {
-    width: 500px;
-    height: auto; 
+    width: 700px;
+    height: 350px;
     background-color: #DFDCD5;
     flex-direction: column;
     display: flex;
     justify-content: center; 
     align-items: center; 
-    border-radius: 0px;
-    clip-path: polygon(0 0, 95% 0, 100% 9%, 100% 100%, 100% 100%, 6% 100%, 0 92%, 0 0);
+    border-radius: 25px;
+    box-shadow: 10px 10px 30px 0 rgba(0, 0, 0, 0.8);
+    margin-bottom: 200px;
+    background: linear-gradient(to bottom, #fffbf1, #c9c7c1);
 }
 
 .login-button {
-    background-color: #D5FF67;
+    background: linear-gradient(135deg, #c3fa37, #D5FF67);
     padding: 10px;
     font-weight: bold;
     font-size: 12px;
     border: none;
     color: #000;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 25px;
     width: 120px;
     align-self: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.5);
     position: relative;
     font-family: 'tomorrow';
-    clip-path: polygon(84% 12%, 89% 41%, 89% 100%, 16% 100%, 10% 68%, 10% 11%);
+    
 }
 
 .login-button:hover {
-    background-color: #D5FF67;
+    background: linear-gradient(135deg, #b7ff00, #8cc300);
+    box-shadow: 3px 3px 10px #b7ff00;
 }
 
 .login-button:active {
@@ -69,10 +72,6 @@ input {
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);   
 }
 
-input:focus {
-    outline: none;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); 
-}
 
 
 .rol-label-container {
@@ -82,27 +81,32 @@ input:focus {
 }
 
 .rol-label {
-    background-color: #131210; 
-    clip-path: polygon(92% 0%, 100% 35%, 100% 100%, 0 100%, 0 0); 
+    font-weight: bold;
+    background: linear-gradient(to bottom, #545454, #2d2d2d);
+    color: #FFFFFF;    
     padding: 5px 30px; 
     color: white;
     font-family: 'tomorrow', sans-serif;
     font-size: 12px; 
-    border-radius: 5px;
+    border-radius: 25px;
+    
 }
 
 
 .rol-dropdown {
-    padding: 15px;
-    font-size: 14px;
-    border: none;
-    background-color: #DFDCD5; 
-    color: black; 
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
+    color: #000000;
+    box-shadow:inset 0 7px 10px rgba(0, 0, 0, 0.2);
+    height: 30px;
+    width: 300px;
+    font-size: 14px;  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
     font-family: 'tomorrow', sans-serif; 
-    border-radius: 5px; 
+    border-radius: 10px; 
 }
 
-.rol-dropdown:focus {
-    outline: none;
-    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2);
-}
+
