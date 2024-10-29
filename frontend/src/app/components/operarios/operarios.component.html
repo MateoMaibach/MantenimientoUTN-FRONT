@@ -3,7 +3,7 @@
     <div class="operarios-button">OPERARIOS</div>
     <select class="operarios-dropdown">
       <option *ngFor="let operario of operarios" [value]="operario.id_operario">
-        {{ operario.nombre }} - {{ operario.apellido }}
+        {{ operario.username }}  
       </option>
       <option value="" disabled selected>Seleccione un operario</option>
     </select>
