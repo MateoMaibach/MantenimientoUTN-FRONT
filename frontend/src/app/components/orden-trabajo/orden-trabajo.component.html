@@ -32,8 +32,8 @@
             <div class="seccionOrdenTrabajo">
                 <div class="tituloOrdenTrabajo">TAREA</div>
                 <select class="selectOrdenTrabajo" [(ngModel)]="selectedTarea">
-                    <option value="" disabled selected hidden>Seleccione una tarea</option> 
-                    <option *ngFor="let tarea of tareas" [value]="tarea.id_tarea">{{ tarea.descripcion }}</option>
+                    <option value="" disabled selected hidden>Seleccione una tarea</option>
+                    <option *ngFor="let tarea of tareas" [value]="tarea.id_tarea">{{tarea.descripcion}}</option>
                 </select>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 <div class="tituloOrdenTrabajo">OPERARIO</div>
                 <select class="selectOrdenTrabajo" [(ngModel)]="selectedOperario">
                     <option value="" disabled selected hidden>Seleccione un operario</option>
-                    <option *ngFor="let operarios of operarios" [value]="operarios.id_operario">{{operarios.username}} </option>
+                    <option *ngFor="let operarios of operarios" [value]="operarios.id_operario">{{operarios.nombre}} {{operarios.apellido}}</option>
                 </select>
             </div>
         </div>

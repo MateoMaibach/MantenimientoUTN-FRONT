@@ -1,82 +1,65 @@
+
     <div class="container">
-        <div class="table-container">
-            <div class="buttons">
-                <div class="button agregar">AGREGAR</div>
-                <div class="button eliminar">ELIMINAR</div>
-                <div class="button editar">EDITAR</div>
+        <div class="box">
+            <div class="header">
+                <button>ACTIVO</button>
+                <input type="text" placeholder="COD:">
             </div>
-            <div class="scroll-container">
+            <div class="filters">
+                <button>TIPO</button>
+                <button>EDIFICIO</button>
+                <button>SECTOR</button>
+                <button>UBICACION</button>
+                <button>PISO</button>
+            </div>
+           
+            <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>ACTIVOS</th>
+                            <th>CODIGO UNICO</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let activo of activos">
-                            <td>{{ activo.tipo_activo }}</td>
+                        <tr>
+                            <td>ILUM</td>
+                            <td>ILUM-001004007003-001</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="scroll-container">
+            <div class="actions">
+                <button class="delete">ELIMINAR</button>
+                <button class="add">AGREGAR</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="header">
+                <button>ENTIDAD <i class="fas fa-caret-down"></i></button>
+                <input type="text">
+            </div>
+            <div class="actions">
+                <button class="add">AGREGAR</button>
+                <button class="delete">ELIMINAR</button>
+            </div>
+            <div class="table-container">
                 <table>
                     <thead>
                         <tr>
+                            <th>ACTIVOS</th>
                             <th>EDIFICIO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let edificio of edificios">
-                            <td>{{ edificio.nombre }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="scroll-container">
-                <table>
-                    <thead>
-                        <tr>
                             <th>SECTOR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let sector of sectores">
-                            <td>{{ sector.nombre }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="scroll-container">
-                <table>
-                    <thead>
-                        <tr>
                             <th>UBICACION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let ubicacion of ubicaciones">
-                            <td>{{ ubicacion.descripcion }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="scroll-container">
-                <table>
-                    <thead>
-                        <tr>
                             <th>PISO</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let piso of pisos">
-                            <td>{{ piso.nombre }}</td>
-                        </tr>
+                        <!-- Empty rows as per the screenshot -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-
+    
 
