@@ -140,7 +140,7 @@ select:focus {
 }
 
 .buttonsub{
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: 325px;
     display: flex;
     gap: 20px;    
