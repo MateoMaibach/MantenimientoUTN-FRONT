@@ -7,8 +7,8 @@ import { PisoService } from '../../services/piso.service';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { OperariosService } from '../../services/operarios.service';
 
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+import html2canvas  from 'html2canvas';
 
 @Component({
   selector: 'app-orden-trabajo',
@@ -25,13 +25,13 @@ export class OrdenTrabajoComponent implements OnInit {
   ubicaciones: any[] = [];
   operarios: any[] = [];
 
-  selectedEdificio: any;
-  selectedActivo: any;
-  selectedTarea: any;
-  selectedSector: any;
-  selectedPiso: any;
-  selectedUbicacion: any;
-  selectedOperario: any;
+  selectedEdificio: any = null;
+  selectedActivo: any = null;
+  selectedTarea: any = null;
+  selectedSector: any = null ;
+  selectedPiso: any = null ;
+  selectedUbicacion: any = null;
+  selectedOperario: any = null;
 
   constructor(
     private edificioService: EdificioService,
@@ -130,23 +130,47 @@ export class OrdenTrabajoComponent implements OnInit {
     );
   }
 
-  // Método para generar PDF
+  
   generatePDF() {
-    const data = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
-
-    if (data) {
-      html2canvas(data).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('Orden_Trabajo.pdf');
-      });
+    const elementToPrint = document.getElementById('contenidoPDF');
+  
+    if (!elementToPrint) {
+      console.error('No se encontró el elemento contenidoPDF.');
+      return;
     }
+  
+    html2canvas(elementToPrint, { scale: 2 }).then((canvas) => {
+      const pdf = new jsPDF('p', 'mm', 'a4'); // A4 vertical
+      const imageData = canvas.toDataURL('image/png');
+  
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+  
+      // Ajuste de escala para ocupar un 95% de la altura de la hoja
+      const scale = Math.min((pdfWidth * 1) / imgWidth, (pdfHeight * 1) / imgHeight);
+      const scaledWidth = imgWidth * scale;
+      const scaledHeight = imgHeight * scale;
+  
+      // Ajuste de la posición horizontal (desplazado hacia la derecha)
+      const xOffset = 5;
+      const x = (pdfWidth - scaledWidth) / 2 + xOffset;
+      
+      // Ajuste vertical centrado
+      const y = (pdfHeight - scaledHeight) / 2;
+  
+      pdf.addImage(imageData, 'PNG', x, y, scaledWidth, scaledHeight);
+      pdf.setFontSize(12);
+      pdf.save('OrdenTrabajo.pdf');
+    });
   }
+  
+  
+  
+  
+  
 
   // Método para imprimir el formulario
   printForm() {
