@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container"> 
   <div class="operarios-panel">
     <div class="operarios-button">OPERARIOS</div>
     <select class="operarios-dropdown">
+      <option value="" disabled selected>Seleccione un operario</option> 
       <option *ngFor="let operario of operarios" [value]="operario.id_operario">
-        {{ operario.username }}  
+        {{ operario.username}}   
       </option>
-      <option value="" disabled selected>Seleccione un operario</option>
     </select>
   </div>
 
