@@ -6,9 +6,10 @@ import { SectorService } from '../../services/sector.service';
 import { PisoService } from '../../services/piso.service';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { OperariosService } from '../../services/operarios.service';
+import { HttpClient } from '@angular/common/http';
 
-import { jsPDF } from 'jspdf';
-import html2canvas  from 'html2canvas';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-orden-trabajo',
@@ -25,17 +26,15 @@ export class OrdenTrabajoComponent implements OnInit {
   ubicaciones: any[] = [];
   operarios: any[] = [];
 
-
   selectedEdificio: any;
   selectedActivo: any;
-  selectedTarea: any;
+  selectedGrupo: any; 
   selectedSector: any;
   selectedPiso: any;
   selectedUbicacion: any;
   selectedOperario: any;
-  selectedGrupo: any;
-  tareasSeleccionadas: any[] = []; // Aquí se almacenarán las tareas seleccionadas
-
+  tareasSeleccionadas: any[] = []; 
+  selectedFecha: string = '';
 
   constructor(
     private edificioService: EdificioService,
@@ -44,7 +43,8 @@ export class OrdenTrabajoComponent implements OnInit {
     private sectorService: SectorService,
     private pisoService: PisoService,
     private ubicacionService: UbicacionService,
-    private operariosService: OperariosService
+    private operariosService: OperariosService,
+    private http: HttpClient // Inyectar el servicio HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -57,18 +57,21 @@ export class OrdenTrabajoComponent implements OnInit {
     this.cargarOperarios();
   }
 
+  
   buscarTareas() {
     if (this.selectedActivo && this.selectedGrupo) {
-      const apiUrl = `/tareas-por-activo-grupo?tipo_activo=${this.selectedActivo}&grupo=${this.selectedGrupo}`;
-      fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
+      const apiUrl = `http://localhost:3000/tareas-por-activo-grupo?tipo_activo=${this.selectedActivo}&grupo=${this.selectedGrupo}`;
+      this.http.get(apiUrl).subscribe(
+        (data: any) => {
           this.tareasSeleccionadas = data;
           console.log('Tareas encontradas:', data);
-        })
-        .catch(error => console.error('Error al buscar tareas:', error));
+        },
+        (error) => {
+          console.error('Error al obtener las tareas:', error);
+        }
+      );
     } else {
-      this.tareasSeleccionadas = []; // Si no hay selección válida, limpiamos las tareas
+      this.tareasSeleccionadas = []; 
     }
   }
 
@@ -149,47 +152,22 @@ export class OrdenTrabajoComponent implements OnInit {
     );
   }
 
-
   generatePDF() {
-    const elementToPrint = document.getElementById('contenidoPDF');
-  
-    if (!elementToPrint) {
-      console.error('No se encontró el elemento contenidoPDF.');
-      return;
+    const data = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
+
+    if (data) {
+      html2canvas(data).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('Orden_Trabajo.pdf');
+      });
     }
-  
-    html2canvas(elementToPrint, { scale: 2 }).then((canvas) => {
-      const pdf = new jsPDF('p', 'mm', 'a4'); // A4 vertical
-      const imageData = canvas.toDataURL('image/png');
-  
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-  
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-  
-      // Ajuste de escala para ocupar un 95% de la altura de la hoja
-      const scale = Math.min((pdfWidth * 1) / imgWidth, (pdfHeight * 1) / imgHeight);
-      const scaledWidth = imgWidth * scale;
-      const scaledHeight = imgHeight * scale;
-  
-      // Ajuste de la posición horizontal (desplazado hacia la derecha)
-      const xOffset = 5;
-      const x = (pdfWidth - scaledWidth) / 2 + xOffset;
-      
-      // Ajuste vertical centrado
-      const y = (pdfHeight - scaledHeight) / 2;
-  
-      pdf.addImage(imageData, 'PNG', x, y, scaledWidth, scaledHeight);
-      pdf.setFontSize(12);
-      pdf.save('OrdenTrabajo.pdf');
-    });
   }
-  
-  
-  
-  
-  
 
   printForm() {
     const printContents = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
@@ -213,7 +191,6 @@ export class OrdenTrabajoComponent implements OnInit {
               padding: 20px;
               font-family: Arial, sans-serif;
             }
-            /* Aquí puedes añadir más estilos para el formulario si es necesario */
           </style>
         </head>
         <body>
