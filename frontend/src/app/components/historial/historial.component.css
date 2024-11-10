@@ -41,6 +41,7 @@
     font-weight: bold;
     margin-right: 20px;
     
+    
   }
   
   .operarios-dropdown {
@@ -101,7 +102,7 @@
     width: 100%;
   }
   
-  .blank-box, .estado-box, .observaciones-box {
+  .blank-box {
     background-color: white;
     border-radius: 10px;
     
@@ -112,8 +113,8 @@
   
   
   .blank-box {
-    width: 65%;  
-    height: 400px; 
+    width: 1120px;  
+    height: 500px; 
   }
   
   .estado-box {
