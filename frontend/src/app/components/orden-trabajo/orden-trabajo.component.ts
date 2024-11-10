@@ -25,13 +25,17 @@ export class OrdenTrabajoComponent implements OnInit {
   ubicaciones: any[] = [];
   operarios: any[] = [];
 
-  selectedEdificio: any = null;
-  selectedActivo: any = null;
-  selectedTarea: any = null;
-  selectedSector: any = null ;
-  selectedPiso: any = null ;
-  selectedUbicacion: any = null;
-  selectedOperario: any = null;
+
+  selectedEdificio: any;
+  selectedActivo: any;
+  selectedTarea: any;
+  selectedSector: any;
+  selectedPiso: any;
+  selectedUbicacion: any;
+  selectedOperario: any;
+  selectedGrupo: any;
+  tareasSeleccionadas: any[] = []; // Aquí se almacenarán las tareas seleccionadas
+
 
   constructor(
     private edificioService: EdificioService,
@@ -51,6 +55,21 @@ export class OrdenTrabajoComponent implements OnInit {
     this.cargarPisos();
     this.cargarUbicaciones();
     this.cargarOperarios();
+  }
+
+  buscarTareas() {
+    if (this.selectedActivo && this.selectedGrupo) {
+      const apiUrl = `/tareas-por-activo-grupo?tipo_activo=${this.selectedActivo}&grupo=${this.selectedGrupo}`;
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          this.tareasSeleccionadas = data;
+          console.log('Tareas encontradas:', data);
+        })
+        .catch(error => console.error('Error al buscar tareas:', error));
+    } else {
+      this.tareasSeleccionadas = []; // Si no hay selección válida, limpiamos las tareas
+    }
   }
 
   cargarEdificios(): void {
@@ -130,7 +149,7 @@ export class OrdenTrabajoComponent implements OnInit {
     );
   }
 
-  
+
   generatePDF() {
     const elementToPrint = document.getElementById('contenidoPDF');
   
@@ -172,12 +191,10 @@ export class OrdenTrabajoComponent implements OnInit {
   
   
 
-  // Método para imprimir el formulario
   printForm() {
     const printContents = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
     const iframe = document.createElement('iframe');
     
-    // Estilo del iframe
     iframe.style.position = 'absolute';
     iframe.style.width = '0';
     iframe.style.height = '0';

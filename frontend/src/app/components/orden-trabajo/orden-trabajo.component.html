@@ -1,112 +1,97 @@
 <div class="formularioOrdenTrabajo">
-  <div id="contenidoPDF">
-    <div class="seccionPrincipalOrdenTrabajo">
-      <div class="tituloPrincipalOrdenTrabajo">ORDEN DE TRABAJO</div>
-      <span class="labelPrincipalOrdenTrabajo">N° ORDEN:</span>
-      <input class="inputOrdenTrabajo" type="text" placeholder="" />
-    </div>
 
-    <div class="contenedorDetallesOrdenTrabajo">
-      <div class="detallesOrdenTrabajoA">
-        <div class="seccionOrdenTrabajo">
-          <div class="tituloOrdenTrabajo">CÓDIGO ÚNICO</div>
-          <input class="inputOrdenTrabajo" type="text" placeholder="" />
+    <div id = "contenidoPDF"> 
+        <div class="seccionPrincipalOrdenTrabajo">
+            <div class="tituloPrincipalOrdenTrabajo">ORDEN DE TRABAJO</div>
+            <span class="labelPrincipalOrdenTrabajo">N° ORDEN:</span>
+            <input class="inputOrdenTrabajo" type="text" placeholder="" />
         </div>
-
+    
         <div class="contenedorDetallesOrdenTrabajo">
-          <div class="detallesOrdenTrabajoA">
-            <div class="seccionOrdenTrabajo">
-              <div class="tituloOrdenTrabajo">FECHA</div>
-              <input class="inputOrdenTrabajo" type="text" placeholder="" />
+            <div class="detallesOrdenTrabajoA">
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">CÓDIGO ÚNICO</div>
+                    <input class="inputOrdenTrabajo" type="text" placeholder="" />
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">FECHA</div>
+                    <select class="selectOrdenTrabajo">
+                        <option value="" disabled selected hidden>Seleccione fecha</option>
+                    </select>
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">EDIFICIO</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedEdificio">
+                        <option value="" disabled selected hidden>Seleccione un edificio</option>
+                        <option *ngFor="let edificio of edificios" [value]="edificio.id_edificio">{{ edificio.nombre }}</option>
+                    </select>
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">ACTIVO</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedActivo">
+                        <option value="" disabled selected hidden>Seleccione un activo</option>
+                        <option *ngFor="let activo of activos" [value]="activo.tipo_activo">{{ activo.tipo_activo }}</option>
+                    </select>
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">TAREA</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedGrupo" (change)="buscarTareas()">
+                        <option value="" disabled selected hidden>Seleccione una tarea</option>
+                        <option value="planificacion">Planificación</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                    </select>
+                </div>
+                
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">SECTOR</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedSector">
+                        <option value="" disabled selected hidden>Seleccione un sector</option>
+                        <option *ngFor="let sector of sectores" [value]="sector.id_sector">{{sector.nombre}}</option>
+                    </select>
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">PISO</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedPiso">
+                        <option value="" disabled selected hidden>Seleccione un piso</option>
+                        <option *ngFor="let piso of pisos" [value]="piso.id_piso">{{piso.nombre}}</option>
+                    </select>
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">UBICACIÓN</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedUbicacion">
+                        <option value="" disabled selected hidden>Seleccione una ubicación</option>
+                        <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">{{ubicacion.descripcion}}</option>
+                    </select>
+                </div>
+                <div class="seccionOrdenTrabajo">
+                    <div class="tituloOrdenTrabajo">OPERARIO</div>
+                    <select class="selectOrdenTrabajo" [(ngModel)]="selectedOperario">
+                        <option value="" disabled selected hidden>Seleccione un operario</option>
+                        <option *ngFor="let operarios of operarios" [value]="operarios.id_operario">{{operarios.nombre}} {{operarios.apellido}}</option>
+                    </select>
+                </div>
             </div>
-
-            <div class="seccionOrdenTrabajo">
-              <div class="tituloOrdenTrabajo">EDIFICIO</div>
-              <select class="selectOrdenTrabajo" [(ngModel)]="selectedEdificio">
-                <option value="" disabled selected hidden>
-                  Seleccione un edificio
-                </option>
-                <option *ngFor="let edificio of edificios" [value]="edificio.id_edificio">
-                  {{ edificio.nombre }}
-                </option>
-              </select>
+    
+            <div class="detallesOrdenTrabajoC">
+                <div *ngIf="tareasSeleccionadas.length > 0">
+                    <div *ngFor="let tarea of tareasSeleccionadas" class="tarea-item">
+                        {{ tarea.descripcion }}
+                    </div>
+                </div>
+                <textarea *ngIf="tareasSeleccionadas.length === 0" class="inputListaTareas" placeholder="Lista de tareas"></textarea>
             </div>
-          </div>
-
-          <div class="seccionOrdenTrabajo">
-            <div class="tituloOrdenTrabajo">ACTIVO</div>
-            <select class="selectOrdenTrabajo" [(ngModel)]="selectedActivo">
-              <option value="" disabled selected hidden>
-                Seleccione un activo
-              </option>
-              <option *ngFor="let activo of activos" [value]="activo.id_activo">
-                {{ activo.tipo_activo }}
-              </option>
-            </select>
-          </div>
         </div>
-
-        <div class="detallesOrdenTrabajoB">
-          <div class="seccionOrdenTrabajo">
-            <div class="tituloOrdenTrabajo">SECTOR</div>
-            <select class="selectOrdenTrabajo" [(ngModel)]="selectedSector">
-              <option value="" disabled selected hidden>
-                Seleccione un sector
-              </option>
-              <option *ngFor="let sector of sectores" [value]="sector.id_sector">
-                {{ sector.nombre }}
-              </option>
-            </select>
-          </div>
-
-          <div class="seccionOrdenTrabajo">
-            <div class="tituloOrdenTrabajo">PISO</div>
-            <select class="selectOrdenTrabajo" [(ngModel)]="selectedPiso">
-              <option value="" disabled selected hidden>
-                Seleccione un piso
-              </option>
-              <option *ngFor="let piso of pisos" [value]="piso.id_piso">
-                {{ piso.nombre }}
-              </option>
-            </select>
-          </div>
-
-          <div class="seccionOrdenTrabajo">
-            <div class="tituloOrdenTrabajo">UBICACIÓN</div>
-            <select class="selectOrdenTrabajo" [(ngModel)]="selectedUbicacion">
-              <option value="" disabled selected hidden>
-                Seleccione una ubicación
-              </option>
-              <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">
-                {{ ubicacion.descripcion }}
-              </option>
-            </select>
-          </div>
-
-          <div class="seccionOrdenTrabajo">
-            <div class="tituloOrdenTrabajo">OPERARIO</div>
-            <select class="selectOrdenTrabajo" [(ngModel)]="selectedOperario">
-              <option value="" disabled selected hidden>
-                Seleccione un operario
-              </option>
-              <option *ngFor="let operarios of operarios" [value]="operarios.id_operario">
-                {{ operarios.username }}
-              </option>
-            </select>
-          </div>
+    
+        <div class="observaciones">
+            <textarea class="inputObservaciones" placeholder="Observaciones"></textarea>
         </div>
-      </div>
-
-      <div class="detallesOrdenTrabajoC">
-        <textarea class="inputListaTareas" placeholder=""></textarea>
-      </div>
+    </div>
+        <div class="buttonsub">
+            <button type="submit" class="button">RESET</button>
+            <button type="submit" class="button">CARGAR</button>
+            <button type="button" class="button" (click)="generatePDF()">GENERAR PDF</button>
+            <button type="button" class="button" (click)="printForm()">IMPRIMIR</button>
+        </div>
     </div>
 
-    <div class="buttonsub">
-      <button type="submit" class="button">RESET</button>
-      <button type="submit" class="button">CARGAR</button>
-      <button type="button" class="button" (click)="generatePDF()">GENERAR PDF</button>
-      <button type="button" class="button" (click)="printForm()">IMPRIMIR</button>
-    </div>
-  </div>
-</div>
+  
