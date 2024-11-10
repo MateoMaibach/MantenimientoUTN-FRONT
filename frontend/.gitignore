@@ -40,3 +40,10 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignorar la carpeta de dependencias
+node_modules/
+
+# Ignorar archivos de configuración de paquetes
+package-lock.json
+package.json

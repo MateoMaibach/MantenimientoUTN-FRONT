@@ -2,10 +2,9 @@
   display: flex;
   justify-content: space-between;
 }
-.container { /* Asegúrate de que tu navbar esté dentro de un contenedor */
-  display: flex; /* Habilita Flexbox en el contenedor */
-  
-  position: relative; /* Para que los elementos hijos se posicionen correctamente */
+.container {
+  display: flex;
+  position: relative;
 }
 
 .navbar {
@@ -14,10 +13,9 @@
   background-color: #FFFFFF;
   border-radius: 50px;
   box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
-  
   height: 50px;
-  width: 1000px; /* Puedes ajustar este valor o usar un porcentaje */
-  position: relative; /* Si quieres que esté fijo en la parte superior */
+  width: 1000px;
+  position: relative;
   top: 25px;
   font-family: 'Tomorrow', sans-serif;
 }
@@ -30,7 +28,6 @@
   margin: 0 20px;
   padding: 10px 20px;
   border-radius: 25px;
-  
 }
 
 .navbar a.active {
@@ -42,60 +39,57 @@
   list-style: none;
   display: flex;
   margin: 0;
-  
 }
 
 .container-logo {
-  position: relative; /* Cambiado a relative */
-  top: 25px; /* Alineado con el navbar principal */
-  right: 5px; /* Espacio desde el borde derecho */
-  
+  position: relative;
+  top: 25px;
+  right: 5px;
 }
 
 .navbar-logo {
   display: flex;
-  align-items: center; /* Centra verticalmente */
-  height: 50px; /* Igual a la altura del navbar */
-  background-color: #FFFFFF; /* Color de fondo similar */
+  align-items: center;
+  height: 50px;
+  background-color: #FFFFFF;
   border-radius: 0 25px 25px 0;
-  padding: 0 10px; /* Espaciado interno */
+  padding: 0 10px;
   box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
   width: 60px;
   justify-content: center;
 }
 
 .logo-image {
-  max-height: 70%; /* Asegura que el logo no se exceda en altura */
-  
-  
+  max-height: 70%;
 }
 
 .container-menu {
-  position: relative; /* Mantiene la navbar-menu en la parte superior derecha */
-  top: 25px; /* Alineado con el navbar principal */
-  right: 15px; /* Espacio desde el borde derecho */
+  position: relative;
+  top: 25px;
+  right: 15px;
   justify-content: right;
 }
 
 .navbar-menu {
   display: flex;
-  align-items: center; /* Centra verticalmente */
-  height: 50px; /* Igual a la altura del navbar */
-  background-color: #FFFFFF; /* Color de fondo similar */
-  border-radius: 25px; /* Bordes redondeados */
-  padding: 0 10px; /* Espaciado interno */
+  align-items: center;
+  height: 50px;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  padding: 0 10px;
   width: 150px;
   box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
 }
 
 .icon-button {
-  background: none; /* Sin fondo */
-  border: none; /* Sin borde */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  font-size: 20px; /* Tamaño del icono */
-  margin-right: 10px; /* Espacio entre el icono y el contenido adicional */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
 }
+
 .navbar .nav-link {
   position: relative;
   text-decoration: none;
@@ -107,17 +101,78 @@
 
 .navbar .nav-link:hover {
   background: linear-gradient(135deg, #b7ff00, #a0dc07);
-  
   color: #ffffff;
 }
 
 .navbar .nav-link-registrar{
   color: #ffffff;
   background: linear-gradient(to bottom, #545454, #2d2d2d);
- 
 }
+
 .navbar .nav-link-registrar:hover {
   background: linear-gradient(135deg, #b7ff00, #8cc300);
-  
   color: #000;
+}
+
+.container-menu {
+  position: relative;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.gear-button, .user-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-75%);
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.show {
+  display: block;
+}
+
+.seccionOpciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selectOpcion {
+  padding: 4px;
+  font-size: 15px;
+  width: 200px;
+  text-align: center;
+  font-family: 'Tomorrow', sans-serif;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 75%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  z-index: 1000;
+  margin-top: 8px;
+  width: 100px;
+  text-align: center;
+  font-family: 'Tomorrow', sans-serif;
 }
