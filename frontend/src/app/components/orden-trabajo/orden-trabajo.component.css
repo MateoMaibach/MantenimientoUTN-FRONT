@@ -4,16 +4,32 @@
     font-size: 15px;
 }
 
-
 .formularioOrdenTrabajo {
-    width: 1200px;
-    height: 620px;
+    width: 1000px;
     margin: 20px auto;
     padding: 15px;
     border-radius: 25px;
     background: linear-gradient(to bottom, #fffbf1, #c9c7c1);
     box-shadow: 10px 10px 30px 0 rgba(0, 0, 0, 0.8);
-    
+}
+
+/* Caja de observaciones */
+.observaciones {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.inputObservaciones {
+    width: 95%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    resize: none;
+    height: 100px;
 }
 
 .seccionPrincipalOrdenTrabajo {
@@ -25,27 +41,23 @@
 
 .contenedorDetallesOrdenTrabajo {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 0 auto;
+    justify-content: space-between;
+    margin: 0 30px;
 }
 
-.detallesOrdenTrabajoA,
-.detallesOrdenTrabajoB {
+.detallesOrdenTrabajoA {
     flex: 1;
-    max-width: 45%;
+    display: flex;
+    flex-direction: column;
 }
 
 .detallesOrdenTrabajoC {
-    margin-top: 0px;
-    margin-left: 40px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .tituloPrincipalOrdenTrabajo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: bold;
     background: linear-gradient(to bottom, #545454, #2d2d2d);
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
@@ -54,6 +66,7 @@
     width: 180px;
     border-radius: 25px;
     margin-right: 20px;
+    text-align: center;
 }
 
 .seccionOrdenTrabajo {
@@ -81,54 +94,38 @@
     background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
     font-size: 14px;
     font-weight: bold;
-    width: 100%;
-    max-width: 200px;
-    box-shadow:inset 0 7px 10px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.2);
     border: none;
 }
 
-
-
-.selectOrdenTrabajo {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-.selectOrdenTrabajo::-ms-expand {
-    display: none;
-}
-
-.labelPrincipalOrdenTrabajo {
-    margin-right: 10px;
-    margin-left: 20px;
-}
-
 .inputListaTareas {
-    width: calc(100% - 40px);
-    max-width: 100%;
-    height: 250px;
+    width: 480px;
+    height: 500px;
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #EBE8E1;
-    background-color:#f2f2f2;
-    resize: none;
-    margin: 10px auto 0 auto;
-    box-sizing: border-box;
+    background-color: #f2f2f2;
     border-radius: 10px;
+    box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
 select {
     border-radius: 15px;
     background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
     color: #000000;
-    box-shadow:inset 0 7px 10px rgba(0, 0, 0, 0.2);
-    
+    box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.2);
 }
 
 select:hover {
     border-color: #ABA89F;
     background-color: #ABA89F;
+}
+
+.selectOrdenTrabajo {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 select:focus {
@@ -137,14 +134,14 @@ select:focus {
     border-radius: 25px;
 }
 
-.buttonsub{
-    margin-top: 10px;
-    margin-left: 325px;
+.buttonsub {
     display: flex;
-    gap: 20px;    
-    
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
 }
-.button{
+
+.button {
     font-weight: bold;
     background: linear-gradient(to bottom, #545454, #2d2d2d);
     color: #FFFFFF;
@@ -154,11 +151,10 @@ select:focus {
     text-align: center;
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
     border: none;
-   
-   
 }
+
 .button:hover {
     background: linear-gradient(135deg, #b7ff00, #8cc300);
     box-shadow: 0px 0px 6px #b7ff00;
-    color: #000000;
+    color: #2c2c2c;
 }

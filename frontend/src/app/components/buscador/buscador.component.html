@@ -1,65 +1,66 @@
-
-    <div class="container">
-        <div class="box">
-            <div class="header">
-                <button>ACTIVO</button>
-                <input type="text" placeholder="COD:">
-            </div>
-            <div class="filters">
-                <button>TIPO</button>
-                <button>EDIFICIO</button>
-                <button>SECTOR</button>
-                <button>UBICACION</button>
-                <button>PISO</button>
-            </div>
-           
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ACTIVOS</th>
-                            <th>CODIGO UNICO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ILUM</td>
-                            <td>ILUM-001004007003-001</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="actions">
-                <button class="delete">ELIMINAR</button>
-                <button class="add">AGREGAR</button>
-            </div>
+<div class="container">
+    <!-- Contenedor de Entidades -->
+    <div class="box">
+        <div class="header">
+            <button>ENTIDAD <i class="fas fa-caret-down"></i></button>
+            <input type="text">
         </div>
-        <div class="box">
-            <div class="header">
-                <button>ENTIDAD <i class="fas fa-caret-down"></i></button>
-                <input type="text">
-            </div>
-            <div class="actions">
-                <button class="add">AGREGAR</button>
-                <button class="delete">ELIMINAR</button>
-            </div>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ACTIVOS</th>
-                            <th>EDIFICIO</th>
-                            <th>SECTOR</th>
-                            <th>UBICACION</th>
-                            <th>PISO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Empty rows as per the screenshot -->
-                    </tbody>
-                </table>
-            </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ACTIVOS</th>
+                        <th>EDIFICIO</th>
+                        <th>SECTOR</th>
+                        <th>UBICACION</th>
+                        <th>PISO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Empty rows as per the screenshot -->
+                </tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <button class="add">AGREGAR</button>
+            <button class="delete">ELIMINAR</button>
         </div>
     </div>
     
-
+    <!-- Contenedor de Activos -->
+    <div class="box">
+        <div class="header">
+            <button>ACTIVO</button>
+            <input type="text" placeholder="COD:">
+        </div>
+        <div class="filters">
+            <button>TIPO</button>
+            <button>EDIFICIO</button>
+            <button>SECTOR</button>
+            <button>UBICACION</button>
+            <button>PISO</button>
+        </div>
+       
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ACTIVOS</th>
+                        <th>CODIGO UNICO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ILUM</td>
+                        <td>ILUM-001004007003-001</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <button class="delete">ELIMINAR</button>
+            <button class="add">AGREGAR</button>
+        </div>
+    </div>
+</div>
