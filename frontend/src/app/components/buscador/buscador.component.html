@@ -1,49 +1,63 @@
-
 <div class="wrapper">
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ACTIVOS</th>
-                    <th>EDIFICIO</th>
-                    <th>SECTOR</th>
-                    <th>UBICACION</th>
-                    <th>PISO</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-            </tbody>
-        </table>
+        <!-- Formulario para agregar o eliminar elementos -->
         <div class="form-group">
             <label for="activo">ACTIVO</label>
-            <input type="text" id="activo">
-            <button>+</button>
-            <button>-</button>
+            <input type="text" id="activo" [(ngModel)]="selectedValues.activo">
+            <button (click)="agregarElemento('ACTIVO')">+</button>
+            <button (click)="eliminarElemento('ACTIVO')">-</button>
         </div>
+
         <div class="form-group">
             <label for="edificio">EDIFICIO</label>
-            <input type="text" id="edificio">
-            <button>+</button>
-            <button>-</button>
+            <input type="text" id="edificio" [(ngModel)]="selectedValues.edificio">
+            <button (click)="agregarElemento('EDIFICIO')">+</button>
+            <button (click)="eliminarElemento('EDIFICIO')">-</button>
         </div>
+
         <div class="form-group">
             <label for="sector">SECTOR</label>
-            <input type="text" id="sector">
-            <button>+</button>
-            <button>-</button>
+            <input type="text" id="sector" [(ngModel)]="selectedValues.sector">
+            <button (click)="agregarElemento('SECTOR')">+</button>
+            <button (click)="eliminarElemento('SECTOR')">-</button>
         </div>
+
         <div class="form-group">
             <label for="ubicacion">UBICACION</label>
-            <input type="text" id="ubicacion">
-            <button>+</button>
-            <button>-</button>
+            <input type="text" id="ubicacion" [(ngModel)]="selectedValues.ubicacion">
+            <button (click)="agregarElemento('UBICACION')">+</button>
+            <button (click)="eliminarElemento('UBICACION')">-</button>
         </div>
+
         <div class="form-group">
             <label for="piso">PISO</label>
-            <input type="text" id="piso">
-            <button>+</button>
-            <button>-</button>
+            <input type="text" id="piso" [(ngModel)]="selectedValues.piso">
+            <button (click)="agregarElemento('PISO')">+</button>
+            <button (click)="eliminarElemento('PISO')">-</button>
+        </div>
+
+        <!-- Tabla con desplazamiento -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ACTIVOS</th>
+                        <th>EDIFICIO</th>
+                        <th>SECTOR</th>
+                        <th>UBICACION</th>
+                        <th>PISO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableData">
+                        <td>{{ item.activo?.tipo_activo || 'N/A' }}</td>
+                        <td>{{ item.edificio?.nombre || 'N/A' }}</td>
+                        <td>{{ item.sector?.nombre || 'N/A' }}</td>
+                        <td>{{ item.ubicacion?.descripcion || 'N/A' }}</td>
+                        <td>{{ item.piso?.nombre || 'N/A' }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
