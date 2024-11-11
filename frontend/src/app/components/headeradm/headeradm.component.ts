@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { RegisterService } from '../../services/register.service';
+
 
 @Component({
   selector: 'app-headeradm',
@@ -17,7 +17,7 @@ export class HeaderadmComponent implements AfterViewInit {
     { id_opcion: 1, descripcion: 'Cerrar sesión' }
   ];
 
-  userName: string = 'Nombre de Usuario'; 
+  userName: string = 'admin'; 
   tooltipVisible: boolean = false; 
 
   constructor(private router: Router, private cookieService: CookieService) {}

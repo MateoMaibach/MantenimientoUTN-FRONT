@@ -2,15 +2,13 @@
     <div id="contenidoPDF">
         <div class="seccionPrincipalOrdenTrabajo">
             <div class="tituloPrincipalOrdenTrabajo">ORDEN DE TRABAJO</div>
-            <span class="labelPrincipalOrdenTrabajo">N° ORDEN:</span>
-            <input class="inputOrdenTrabajo" type="text" placeholder="" />
         </div>
     
         <div class="contenedorDetallesOrdenTrabajo">
             <div class="detallesOrdenTrabajoA">
                 <div class="seccionOrdenTrabajo">
-                    <div class="tituloOrdenTrabajo">CÓDIGO ÚNICO</div>
-                    <input class="inputOrdenTrabajo" type="text" placeholder="" />
+                    
+                    
                 </div>
                 <div class="seccionOrdenTrabajo">
                     <div class="seccionOrdenTrabajo">
@@ -86,9 +84,7 @@
         </div>
     </div>
     <div class="buttonsub">
-        <button type="button" class="button">RESET</button>
+        <button type="button" class="button" (click)="limpiarCampos()">LIMPIAR</button>
         <button type="button" class="button" (click)="cargarOrdenTrabajo()">CARGAR</button>
-        <button type="button" class="button" (click)="generatePDF()">GENERAR PDF</button> 
-        <button type="button" class="button" (click)="printForm()">IMPRIMIR</button>
     </div>
 </div> 

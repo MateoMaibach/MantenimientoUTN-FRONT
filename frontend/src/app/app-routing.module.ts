@@ -7,36 +7,42 @@ import { DashboardOtComponent } from './pages/dashboard-ot/dashboard-ot.componen
 import { DashboardOpComponent } from './pages/dashboard-op/dashboard-op.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './guards/auth.guard'; 
+import { DashboardInicioComponent } from './pages/dashboard-inicio/dashboard-inicio.component';  // Importa el componente
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginPageComponent },
+  { path: '', redirectTo: '/dashboard-inicio', pathMatch: 'full' },  // Redirige a dashboard-inicio
+  { path: 'login', component: LoginPageComponent },  // Página de login
+  {
+    path: 'dashboard-inicio',
+    component: DashboardInicioComponent,  // Página de inicio del dashboard
+    // No se aplica AuthGuard aquí, ya que es accesible sin autenticación
+  },
   {
     path: 'dashboard',
     component: DashboardPageComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
   },
   {
     path: 'dashboard-historial',
     component: DashboardHistorialComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
   },
   {
     path: 'dashboard-ot',
     component: DashboardOtComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
   },
   {
     path: 'dashboard-op',
     component: DashboardOpComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
   },
   { 
     path: 'register', 
     component: RegisterComponent, 
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
   },
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: '/dashboard-inicio' }  // Redirige cualquier ruta no encontrada a dashboard-inicio
 ];
 
 @NgModule({

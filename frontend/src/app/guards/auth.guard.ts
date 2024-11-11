@@ -15,13 +15,15 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
     const token = this.cookieService.get('token');
 
-    if (!token) {
+    // Si no hay token y estamos intentando acceder a una ruta que no es pública, redirigimos a login
+    if (!token && route.routeConfig?.path !== 'login' && route.routeConfig?.path !== 'dashboard-inicio') {
       this.router.navigate(['/login']);
       return false;
     }
 
     const userRole = this.authService.getUserRole();
 
+    // Lógica de control de acceso según el rol del usuario
     if (userRole === 'admin') {
       return true; // El admin tiene acceso a todas las rutas
     } else if (userRole === 'operario') {

@@ -16,6 +16,11 @@ export class TareaService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  getTareasFormateadas(tareas: string[]): string {
+    return tareas.join(' • ');  // Separa las tareas con un símbolo o texto.
+  }
+  
+
   // Método para obtener tareas por activo y grupo
   getTareasPorActivoGrupo(tipoActivo: string, grupo: string): Observable<any[]> {
     const url = `http://localhost:3000/tareas-por-activo-grupo?tipo_activo=${tipoActivo}&grupo=${grupo}`;
