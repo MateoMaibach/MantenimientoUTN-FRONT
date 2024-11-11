@@ -1,18 +1,23 @@
 <div class="container">
-    <div class="operarios-panel">
-      <div class="operarios-button">HISTORIAL</div>
-    </div>
+  <div class="operarios-panel">
+    <div class="operarios-button">HISTORIAL</div>
+  </div>
   
-    
-      <div class="tareas-content">
-        <div class="blank-box">
-          <ul>
-            <li *ngFor="let orden of ordenesTrabajo">
-             {{ orden.OT_num }} {{orden.codigo_unico}} {{ orden.operario_username }} 
-            </li>
-          </ul>
-        </div>
-        
+  <div class="tareas-content">
+    <div class="blank-box">
+      <div class="webcomponent">
+        <ul>
+          <li *ngFor="let orden of ordenesTrabajo" class="orden-item">
+            <div class="orden-cuadro">
+              <h1>Orden N°{{ orden.OT_num }}</h1>
+              <p>Activo: {{orden.tipo_activo}}</p>
+              <p>Codigo único: {{ orden.codigo_unico }}</p>
+              <p>Tarea Asignada al operario: {{ orden.operario_username }}</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="content-below"></div>
+  </div>
+</div>
+<div class="content-below"></div>
