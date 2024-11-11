@@ -23,7 +23,7 @@
                     <div class="tituloOrdenTrabajo">EDIFICIO</div>
                     <select class="selectOrdenTrabajo" [(ngModel)]="selectedEdificio">
                         <option value="" disabled selected hidden>Seleccione un edificio</option>
-                        <option *ngFor="let edificio of edificios" [value]="edificio.id_edificio">{{ edificio.nombre }}</option>
+                        <option *ngFor="let edificio of edificios" [value]="edificio.nombre">{{ edificio.nombre }}</option>
                     </select>
                 </div>
                 <div class="seccionOrdenTrabajo">
@@ -45,28 +45,28 @@
                     <div class="tituloOrdenTrabajo">SECTOR</div>
                     <select class="selectOrdenTrabajo" [(ngModel)]="selectedSector">
                         <option value="" disabled selected hidden>Seleccione un sector</option>
-                        <option *ngFor="let sector of sectores" [value]="sector.id_sector">{{ sector.nombre }}</option>
+                        <option *ngFor="let sector of sectores" [value]="sector.nombre">{{ sector.nombre }}</option>
                     </select>
                 </div>
                 <div class="seccionOrdenTrabajo">
                     <div class="tituloOrdenTrabajo">PISO</div>
                     <select class="selectOrdenTrabajo" [(ngModel)]="selectedPiso">
                         <option value="" disabled selected hidden>Seleccione un piso</option>
-                        <option *ngFor="let piso of pisos" [value]="piso.id_piso">{{ piso.nombre }}</option>
+                        <option *ngFor="let piso of pisos" [value]="piso.nombre">{{ piso.nombre }}</option>
                     </select>
                 </div>
                 <div class="seccionOrdenTrabajo">
                     <div class="tituloOrdenTrabajo">UBICACIÓN</div>
                     <select class="selectOrdenTrabajo" [(ngModel)]="selectedUbicacion">
                         <option value="" disabled selected hidden>Seleccione una ubicación</option>
-                        <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">{{ ubicacion.descripcion }}</option>
+                        <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.descripcion">{{ ubicacion.descripcion }}</option>
                     </select>
                 </div>
                 <div class="seccionOrdenTrabajo">
                     <div class="tituloOrdenTrabajo">OPERARIO</div>
                     <select class="selectOrdenTrabajo" [(ngModel)]="selectedOperario">
                         <option value="" disabled selected hidden>Seleccione un operario</option>
-                        <option *ngFor="let operario of operarios" [value]="operario.id_operario">{{ operario.username }}</option>
+                        <option *ngFor="let operario of operarios" [value]="operario.username">{{ operario.username }}</option>
                     </select>
                 </div>
             </div>
@@ -86,8 +86,8 @@
         </div>
     </div>
     <div class="buttonsub">
-        <button type="submit" class="button">RESET</button>
-        <button type="submit" class="button">CARGAR</button>
+        <button type="button" class="button">RESET</button>
+        <button type="button" class="button" (click)="cargarOrdenTrabajo()">CARGAR</button>
         <button type="button" class="button" (click)="generatePDF()">GENERAR PDF</button>
         <button type="button" class="button" (click)="printForm()">IMPRIMIR</button>
     </div>
