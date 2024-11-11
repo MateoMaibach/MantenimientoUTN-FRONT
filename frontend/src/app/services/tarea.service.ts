@@ -7,11 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class TareaService {
 
-  private apiUrl = 'http://localhost:3000/api/tareas';
+  private apiUrl = 'http://localhost:3000/api/tareas'; // Cambia esto según la URL de tu API
 
   constructor(private http: HttpClient) { }
 
-  getTarea(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
+  // Método para obtener todas las tareas
+  getTarea(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  // Método para obtener tareas por activo y grupo
+  getTareasPorActivoGrupo(tipoActivo: string, grupo: string): Observable<any[]> {
+    const url = `http://localhost:3000/tareas-por-activo-grupo?tipo_activo=${tipoActivo}&grupo=${grupo}`;
+    return this.http.get<any[]>(url);
   }
 }

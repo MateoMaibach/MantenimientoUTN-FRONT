@@ -7,6 +7,7 @@ import { PisoService } from '../../services/piso.service';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { OperariosService } from '../../services/operarios.service';
 import { HttpClient } from '@angular/common/http';
+import { OrdentrabajoService } from '../../services/ordentrabajo.service';
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -18,6 +19,7 @@ import html2canvas from 'html2canvas';
 })
 export class OrdenTrabajoComponent implements OnInit {
 
+  // Listas para los datos de selección
   edificios: any[] = [];
   activos: any[] = [];
   tareas: any[] = [];
@@ -26,15 +28,18 @@ export class OrdenTrabajoComponent implements OnInit {
   ubicaciones: any[] = [];
   operarios: any[] = [];
 
+  // Variables para los valores seleccionados en el formulario
   selectedEdificio: any;
   selectedActivo: any;
-  selectedGrupo: any; 
+  selectedGrupo: any;
   selectedSector: any;
   selectedPiso: any;
   selectedUbicacion: any;
   selectedOperario: any;
-  tareasSeleccionadas: any[] = []; 
+  tareasSeleccionadas: any[] = [];
   selectedFecha: string = '';
+  observaciones: string = '';
+  selectedTarea: any;
 
   constructor(
     private edificioService: EdificioService,
@@ -44,7 +49,8 @@ export class OrdenTrabajoComponent implements OnInit {
     private pisoService: PisoService,
     private ubicacionService: UbicacionService,
     private operariosService: OperariosService,
-    private http: HttpClient // Inyectar el servicio HttpClient
+    private ordentrabajoService: OrdentrabajoService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -55,13 +61,13 @@ export class OrdenTrabajoComponent implements OnInit {
     this.cargarPisos();
     this.cargarUbicaciones();
     this.cargarOperarios();
+    this.cargarOrdenTrabajo()
   }
 
-  
+  // Método para buscar tareas según el activo y grupo seleccionados
   buscarTareas() {
     if (this.selectedActivo && this.selectedGrupo) {
-      const apiUrl = `http://localhost:3000/tareas-por-activo-grupo?tipo_activo=${this.selectedActivo}&grupo=${this.selectedGrupo}`;
-      this.http.get(apiUrl).subscribe(
+      this.tareaService.getTareasPorActivoGrupo(this.selectedActivo, this.selectedGrupo).subscribe(
         (data: any) => {
           this.tareasSeleccionadas = data;
           console.log('Tareas encontradas:', data);
@@ -71,7 +77,7 @@ export class OrdenTrabajoComponent implements OnInit {
         }
       );
     } else {
-      this.tareasSeleccionadas = []; 
+      this.tareasSeleccionadas = [];
     }
   }
 
@@ -152,16 +158,43 @@ export class OrdenTrabajoComponent implements OnInit {
     );
   }
 
+  // Método para cargar y guardar la orden de trabajo
+  cargarOrdenTrabajo() {
+    const ordenTrabajo = {
+      fecha: this.selectedFecha,
+      observacion: this.observaciones || '',
+      edificio_nombre: this.selectedEdificio,
+      tarea_descripcion:'Relevar marca.',
+      sector_nombre: this.selectedSector,
+      piso_nombre: this.selectedPiso,
+      ubicacion_descripcion: this.selectedUbicacion,
+      operario_username: this.selectedOperario,
+      tipo_activo: this.selectedActivo
+    };
+  
+    // Enviar la orden de trabajo al servicio
+    this.ordentrabajoService.createOrdenTrabajo(ordenTrabajo).subscribe(
+      (response) => {
+        console.log('Orden de trabajo guardada exitosamente:', response);
+        alert('Orden de trabajo guardada exitosamente.');
+      },
+      (error) => {
+        console.error('Error al guardar la orden de trabajo:', error);
+        alert('Hubo un error al guardar la orden de trabajo. Por favor, revisa los datos e inténtalo nuevamente.');
+      }
+    );
+  }
+  
+
+  // Método para generar el PDF de la orden de trabajo
   generatePDF() {
     const data = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
-
     if (data) {
       html2canvas(data).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
         pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
         pdf.save('Orden_Trabajo.pdf');
@@ -169,6 +202,7 @@ export class OrdenTrabajoComponent implements OnInit {
     }
   }
 
+  // Método para imprimir la orden de trabajo
   printForm() {
     const printContents = document.querySelector('.formularioOrdenTrabajo') as HTMLElement;
     const iframe = document.createElement('iframe');
