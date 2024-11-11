@@ -22,9 +22,10 @@
 }
 
 .operarios-panel {
-  width: 32%; 
-  padding: 10px;
-  margin-right: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .operarios-button {
@@ -36,78 +37,23 @@
   width: 150px;
   font-size: 16px;
   font-weight: bold;
-  margin-right: 20px;
   text-align: center;
-}
-
-.operarios-panel {
-  width: 100%; /* Extiende el ancho para que ocupe el contenedor */
-  display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
-}
-
-.operarios-dropdown {
-  width: 80%;
-  padding: 5px; 
-  border: 2px solid #DFDCD5;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  margin-top: 30px;
-  font-size: 14px; 
-  border-radius: 15px;
-  background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
-  color: #000000;
-  box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.2);
-}
-
-.operarios-dropdown option {
-  border-radius: 15px;
-  background: linear-gradient(to bottom, #b3b3b3, #c9c7c1);
-  color: #000000;
-  box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.2);
-}
-
-.tareas-panel {
-  position: absolute;
-  top: 50px;  
-  right: 20px;
-  width: 60%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.tareas-header {
-  display: flex;
-  justify-content: space-between; 
-  width: 85%;
-  margin-bottom: 20px;
-}
-
-.header-item {
-  flex: 1; 
-  text-align: center; 
-  margin-bottom: 10px;
 }
 
 .tareas-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
   width: 100%;
 }
 
 .blank-box {
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
   background-color: #f0f0f0;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
   height: 500px;
-  margin: 0 auto;
-  overflow-y: auto; /* Permitir scroll vertical si es necesario */
+  overflow-y: auto;
 }
 
 .webcomponent ul {
@@ -140,4 +86,75 @@
   font-size: 16px;
   margin: 6px 0;
   color: #333333;
+}
+
+.ver-detalles-button {
+  background: linear-gradient(to bottom, #008CBA, #005F73);
+  padding: 10px 15px;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.ver-detalles-button:hover {
+  background: linear-gradient(to bottom, #005F73, #008CBA);
+}
+
+.orden-detalle-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.close-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.close-button:hover {
+  background-color: #d32f2f;
+}
+
+.content-below {
+  margin-top: 20px;
+}
+
+/* Botón de eliminación en el modal de detalles */
+.eliminar-button {
+  background-color: #e53935;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.eliminar-button:hover {
+  background-color: #b71c1c;
 }

@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { LoginComponent } from './components/login/login.component';
 import { HeaderadmComponent } from './components/headeradm/headeradm.component';
-import { OperariosComponent } from './components/operarios/operarios.component';
+import { TareasOperarioComponent } from './components/operarios/operarios.component';
 import { RegistroComponent } from './components/registro/registro.component';
 
 import { HeaderComponent } from './components/header/header.component';
@@ -33,7 +33,7 @@ import { DashboardInicioComponent } from './pages/dashboard-inicio/dashboard-ini
     AppComponent,
     LoginComponent,
     HeaderadmComponent,
-    OperariosComponent,
+    TareasOperarioComponent,
     RegistroComponent,
     HeaderComponent,
     OrdenTrabajoComponent, 

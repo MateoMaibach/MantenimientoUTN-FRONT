@@ -34,6 +34,20 @@ export class OrdenTrabajoComponent implements OnInit {
   selectedFecha: string = '';
   observaciones: string = '';
 
+  limpiarCampos() {
+    this.selectedFecha = '';
+    this.selectedEdificio = '';
+    this.selectedActivo = '';
+    this.selectedGrupo = '';
+    this.selectedSector = '';
+    this.selectedPiso = '';
+    this.selectedUbicacion = '';
+    this.selectedOperario = '';
+    this.tareasSeleccionadas = [];
+  }
+  
+
+
   constructor(
     private edificioService: EdificioService,
     private activoService: ActivoService,
@@ -152,7 +166,7 @@ export class OrdenTrabajoComponent implements OnInit {
   cargarOrdenTrabajo() {
     const ordenTrabajo: OrdenTrabajo = {
       fecha: this.selectedFecha,
-      observacion: this.observaciones || '',
+      observacion: this.observaciones ,
       edificio_nombre: this.selectedEdificio,
       tarea_descripcion: 'Grupo de tareas', // Descripción general del grupo de tareas
       sector_nombre: this.selectedSector,
@@ -173,5 +187,7 @@ export class OrdenTrabajoComponent implements OnInit {
         alert('Hubo un error al guardar la orden de trabajo. Por favor, revisa los datos e inténtalo nuevamente.');
       }
     );
+    
+    
   }
 }

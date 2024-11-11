@@ -1,8 +1,12 @@
 <div class="container">
+  <!-- Panel de botón de HISTORIAL -->
   <div class="operarios-panel">
-    <div class="operarios-button">HISTORIAL</div>
+    <div class="operarios-button" (click)="verHistorial()">
+      HISTORIAL
+    </div>
   </div>
   
+  <!-- Contenido de tareas -->
   <div class="tareas-content">
     <div class="blank-box">
       <div class="webcomponent">
@@ -10,9 +14,14 @@
           <li *ngFor="let orden of ordenesTrabajo" class="orden-item">
             <div class="orden-cuadro">
               <h1>Orden N°{{ orden.OT_num }}</h1>
+              <p>Fecha: {{orden.fecha}}</p>
               <p>Activo: {{orden.tipo_activo}}</p>
-              <p>Codigo único: {{ orden.codigo_unico }}</p>
-              <p>Tarea Asignada al operario: {{ orden.operario_username }}</p>
+              <p>Código único: {{ orden.codigo_unico }}</p>
+              <p>Tarea asignada al operario: {{ orden.operario_username }}</p>
+              <!-- Botón para ver más detalles -->
+              <div class="ver-detalles-button" (click)="verDetalles(orden)">
+                Ver detalles
+              </div>
             </div>
           </li>
         </ul>
@@ -20,4 +29,29 @@
     </div>
   </div>
 </div>
+
+<!-- Modal de detalles de la orden seleccionada -->
+<div *ngIf="ordenSeleccionada" class="orden-detalle-modal">
+  <div class="modal-content">
+    <h2>Detalles de la Orden N°{{ ordenSeleccionada.OT_num }}</h2>
+    <p><strong>Fecha:</strong> {{ ordenSeleccionada.fecha }}</p>
+    <p><strong>Edificio:</strong> {{ ordenSeleccionada.edificio_nombre }}</p>
+    <p><strong>Activo:</strong> {{ ordenSeleccionada.tipo_activo }}</p>
+    <p><strong>Código único:</strong> {{ ordenSeleccionada.codigo_unico }}</p>
+    <p><strong>Descripción:</strong></p>
+    <ul>
+      <li *ngFor="let tarea of ordenSeleccionada.tareas.split(',')" class="tarea-item">{{ tarea.trim() }}</li>
+    </ul>
+    <p><strong>Observaciones: </strong>{{ ordenSeleccionada.observacion }}</p>
+
+    <!-- Botón para eliminar la orden -->
+    <div class="eliminar-button" (click)="eliminarOrden(ordenSeleccionada.id_orden)">
+      Eliminar Orden
+    </div>
+
+    <!-- Botón para cerrar el modal -->
+    <div class="close-button" (click)="ordenSeleccionada = null">Cerrar</div>
+  </div>
+</div>
+
 <div class="content-below"></div>
