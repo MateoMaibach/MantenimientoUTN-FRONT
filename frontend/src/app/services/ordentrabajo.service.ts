@@ -24,6 +24,7 @@ export interface OrdenTrabajo {
 export class OrdentrabajoService {
   private apiUrl = 'http://localhost:3000/api/ordentrabajo';
   private apiUrl1 = 'http://localhost:3000/api/ordentrabajo/id/'
+  private apiUrl2= 'http://localhost:3000/api/ordentrabajo/ac/'
 
   constructor(private http: HttpClient) {}
 
@@ -49,4 +50,15 @@ export class OrdentrabajoService {
   eliminarOrden(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  
+  getOrdenesTrabajoAC(tipo_activo: string): Observable<OrdenTrabajo[]> {
+    return this.http.get<OrdenTrabajo[]>(`${this.apiUrl2}/${tipo_activo}`);
+  }
+
+  getOrdenesPorOperarioYActivo(operario_username: string, tipo_activo: string): Observable<OrdenTrabajo[]> {
+    return this.http.get<OrdenTrabajo[]>(`${this.apiUrl}/${operario_username}/activo/${tipo_activo}`);
+  }
+
+  
 }

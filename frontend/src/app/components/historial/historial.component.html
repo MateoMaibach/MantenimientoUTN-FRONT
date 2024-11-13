@@ -1,11 +1,35 @@
 <div class="container">
   <!-- Panel de botón de HISTORIAL -->
   <div class="operarios-panel">
-    <div class="operarios-button" (click)="verHistorial()">
-      HISTORIAL
-    </div>
+    <div class="operarios-button">HISTORIAL</div>
   </div>
-  
+
+  <div class="filter">
+    <h1>Filtrar por:</h1>
+    <label for="operarioSelect" class="operarios-label">Operario:</label>
+    <select id="operarioSelect" [(ngModel)]="operarioSeleccionado" class="operarios-dropdown">
+      <option value="" disabled selected>Seleccione un operario</option> 
+      <option *ngFor="let operario of operarios" [value]="operario.username">
+        {{ operario.username }}
+      </option>
+    </select>
+    
+    <label for="activoSelect" class="activo-label">Activo:</label>
+    <select id="activoSelect" [(ngModel)]="activoSeleccionado" class="activo-dropdown">
+      <option value="" disabled selected>Seleccione un activo</option>
+      <option *ngFor="let activo of activos" [value]="activo.tipo_activo">
+        {{ activo.tipo_activo }}
+      </option>
+    </select>
+      
+   
+  <button (click)="cargarOrdenes()" class="cargar-tareas-button">Ver</button>
+
+
+  <button (click)="limpiarFiltros()" class="cargar-tareas-button">Limpiar</button>
+
+  </div>
+
   <!-- Contenido de tareas -->
   <div class="tareas-content">
     <div class="blank-box">
@@ -45,7 +69,7 @@
     <p><strong>Observaciones: </strong>{{ ordenSeleccionada.observacion }}</p>
 
     <!-- Botón para eliminar la orden -->
-    <div class="eliminar-button" (click)="eliminarOrden(ordenSeleccionada.id_orden)">
+    <div class="eliminar-button" (click)="eliminarOrden(ordenSeleccionada.OT_num)">
       Eliminar Orden
     </div>
 
@@ -53,5 +77,3 @@
     <div class="close-button" (click)="ordenSeleccionada = null">Cerrar</div>
   </div>
 </div>
-
-<div class="content-below"></div>

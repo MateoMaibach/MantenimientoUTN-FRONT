@@ -4,6 +4,7 @@ import { OrdentrabajoService, OrdenTrabajo } from '../../services/ordentrabajo.s
 import { OperariosService } from '../../services/operarios.service';
 import { Operario } from '../../models/operario.model';
 
+
 @Component({
   selector: 'app-operarios',
   templateUrl: './operarios.component.html',
