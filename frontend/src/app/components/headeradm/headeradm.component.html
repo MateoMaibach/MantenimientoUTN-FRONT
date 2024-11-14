@@ -1,34 +1,37 @@
 <div class="header">
   <div class="container-logo">
-   <nav class="navbar-logo">
-     <img src="assets/utn.png" alt="Logo" class="logo-image"> 
-   </nav>
- </div>
- <div class="container">
-   <nav class="navbar">
-     <ul>
-       <li><a class="nav-link" [routerLink]="['/dashboard']">ACTIVOS</a></li>
-       <li><a class="nav-link" [routerLink]="['/dashboard-historial']">HISTORIAL</a></li>
-       <li><a class="nav-link" [routerLink]="['/dashboard-ot']">ORDENES DE TRABAJO</a></li>
-       <li><a class="nav-link" [routerLink]="['/dashboard-op']">OPERARIOS</a></li>
-       <li><a class="nav-link-registrar" [routerLink]="['/register']">REGISTRAR</a></li>
-     </ul>
-   </nav>
- </div>
+    <nav class="navbar-logo">
+      <img src="assets/utn.png" alt="Logo" class="logo-image"> 
+    </nav>
+  </div>
+  <div class="container">
+    <nav class="navbar">
+      <ul>
+        <li><a class="nav-link" [routerLink]="['/dashboard']">ACTIVOS</a></li>
+        <li><a class="nav-link" [routerLink]="['/dashboard-historial']">HISTORIAL</a></li>
+        <li><a class="nav-link" [routerLink]="['/dashboard-ot']">ORDENES DE TRABAJO</a></li>
+        <li><a class="nav-link" [routerLink]="['/dashboard-op']">OPERARIOS</a></li>
+        <li><a class="nav-link-registrar" [routerLink]="['/register']">REGISTRAR</a></li>
+      </ul>
+    </nav>
+  </div>
 
- <div class="container-menu">
-  <nav class="navbar-menu">
-    <button #gearButton class="gear-button">⚙️</button>
-    <button #userButton class="user-button">👤</button>
-    <div *ngIf="tooltipVisible" class="tooltip">{{ userName }}</div>
-    <div #dropdownMenu class="dropdown-menu">
-      <div class="seccionOpciones">
-        <select class="selectOpcion" (change)="onOptionSelect($event)">
-          <option value="" disabled selected hidden>Seleccione una opción</option> 
-          <option *ngFor="let opcion of opciones" [value]="opcion.id_opcion">{{ opcion.descripcion }}</option>
-        </select>
+  <div class="container-menu">
+    <nav class="navbar-menu">
+      <button #gearButton class="gear-button">⚙️</button>
+      <button #userButton class="user-button" (mouseenter)="tooltipVisible = true" (mouseleave)="tooltipVisible = false">👤</button>
+      
+      <!-- Tooltip para mostrar el nombre del usuario logueado -->
+      <div *ngIf="tooltipVisible" class="tooltip">{{ userName }}</div>
+      
+      <div #dropdownMenu class="dropdown-menu">
+        <div class="seccionOpciones">
+          <select class="selectOpcion" (change)="onOptionSelect($event)">
+            <option value="" disabled selected hidden>Seleccione una opción</option> 
+            <option *ngFor="let opcion of opciones" [value]="opcion.id_opcion">{{ opcion.descripcion }}</option>
+          </select>
+        </div>
       </div>
-    </div>
-  </nav>
-</div>
+    </nav>
+  </div>
 </div>

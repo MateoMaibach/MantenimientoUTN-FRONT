@@ -145,7 +145,7 @@
   margin-top: 20px;
 }
 
-/* Botón de eliminación en el modal de detalles */
+
 .eliminar-button {
   background-color: #e53935;
   color: white;
@@ -165,8 +165,8 @@
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: space-between; /* Espacia los botones */
-  align-items: center; /* Alinea los botones verticalmente */
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 .filter h1{
@@ -179,7 +179,7 @@
   color: #FFFFFF;
   border-radius: 25px;
   padding: 4px 20px;
-  width: 120px; /* Asegura que los botones tengan el mismo tamaño */
+  width: 120px; 
   height: 35px;
   font-size: 16px;
   font-weight: bold;
@@ -188,4 +188,18 @@
 
 .cargar-tareas-button:hover {
   background: linear-gradient(to bottom, #2d2d2d, #545454);
+}
+
+.pdf-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pdf-button:hover {
+  background-color: #45a049;
 }

@@ -80,8 +80,11 @@
         </div>
     
         <div class="observaciones">
-            <textarea class="inputObservaciones" placeholder="Observaciones"></textarea>
+            <textarea class="inputObservaciones" placeholder="Observaciones" [(ngModel)]="observaciones"></textarea>
         </div>
+        
+
+        
     </div>
     <div class="buttonsub">
         <button type="button" class="button" (click)="limpiarCampos()">LIMPIAR</button>

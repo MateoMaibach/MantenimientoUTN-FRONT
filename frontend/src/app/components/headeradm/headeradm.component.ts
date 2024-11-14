@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import { AuthService } from '../../services/login.service';
 
 @Component({
   selector: 'app-headeradm',
@@ -17,10 +17,16 @@ export class HeaderadmComponent implements AfterViewInit {
     { id_opcion: 1, descripcion: 'Cerrar sesión' }
   ];
 
-  userName: string = 'admin'; 
+  userName: string = ''; 
   tooltipVisible: boolean = false; 
 
-  constructor(private router: Router, private cookieService: CookieService) {}
+  constructor(
+    private router: Router,
+    private cookieService: CookieService,
+    private authService: AuthService
+  ) {
+    this.userName = this.authService.getCurrentUser() || 'Usuario'; // Obtén el nombre de usuario
+  }
 
   ngAfterViewInit(): void {
     this.configureGearButton();
