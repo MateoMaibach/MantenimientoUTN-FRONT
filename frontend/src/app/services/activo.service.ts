@@ -7,22 +7,22 @@ import { Observable } from 'rxjs';
 })
 export class ActivoService {
 
-  private apiUrl = 'http://localhost:3000/api/activo'; // Cambia la URL si es necesario
+  private apiUrl = 'http://localhost:3000/api/activo';
 
   constructor(private http: HttpClient) { }
 
-  // Obtener la lista de activos
+  
   getActivo(): Observable<any> {
     return this.http.get(`${this.apiUrl}`);
   }
 
-  // Agregar un nuevo activo
+  
   addActivo(activo: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, activo);
   }
 
-  // Eliminar un activo por ID o nombre, según lo que maneje la API
-  deleteActivo(id: any): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  
+  deleteActivo(tipo_activo: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}?tipo_activo=${tipo_activo}`);
   }
 }
