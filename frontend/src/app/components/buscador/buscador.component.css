@@ -15,11 +15,11 @@
 }
 
 .table-container {
-    max-height: 300px; /* Altura máxima de la tabla para que no sea demasiado larga */
-    overflow-y: auto;  /* Desplazamiento en y */
+    max-height: 300px; 
     margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    overflow-y: auto;
 }
 
 table {
@@ -40,7 +40,7 @@ th {
     position: sticky;
     top: 0;
     z-index: 1;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Añade un ligero sombreado para resaltar la cabecera */
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); 
 }
 
 .form-group {
@@ -82,11 +82,18 @@ th {
     text-align: center;
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
     border: none;
-    cursor: pointer; /* Añade un cursor para que se vea como botón */
+    cursor: pointer; 
 }
 
 .form-group button:hover {
     background: linear-gradient(135deg, #b7ff00, #8cc300);
     box-shadow: 0px 0px 6px #b7ff00;
     color: #2c2c2c;
+}
+.user-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0; 
+    margin-right: 30px;
 }

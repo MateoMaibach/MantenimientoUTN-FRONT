@@ -21,7 +21,7 @@ interface SelectedValues {
 })
 export class BuscadorComponent implements OnInit {
 
-  tableData: any[] = []; // Almacena los datos combinados para la tabla
+  tableData: any[] = [];
   activos: any[] = [];
   edificios: any[] = [];
   sectores: any[] = [];
@@ -45,7 +45,7 @@ export class BuscadorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Cargar datos al inicializar el componente
+    
     this.cargarEdificios();
     this.cargarActivos();
     this.cargarSectores();
@@ -134,57 +134,63 @@ export class BuscadorComponent implements OnInit {
   agregarElemento(item: string): void {
     const valor = this.selectedValues[item.toLowerCase()];
     if (!valor) {
-      alert('Por favor, ingrese un valor antes de agregar.');
-      return;
+        alert('Por favor, ingrese un valor antes de agregar.');
+        return;
     }
 
-    const nuevoElemento = { nombre: valor };
+    let nuevoElemento: any;
     switch (item) {
-      case 'ACTIVO':
-        this.activoService.addActivo(nuevoElemento).subscribe(() => this.cargarActivos());
-        break;
-      case 'EDIFICIO':
-        this.edificioService.addEdificio(nuevoElemento).subscribe(() => this.cargarEdificios());
-        break;
-      case 'SECTOR':
-        this.sectorService.addSector(nuevoElemento).subscribe(() => this.cargarSectores());
-        break;
-      case 'UBICACION':
-        this.ubicacionService.addUbicacion(nuevoElemento).subscribe(() => this.cargarUbicaciones());
-        break;
-      case 'PISO':
-        this.pisoService.addPiso(nuevoElemento).subscribe(() => this.cargarPisos());
-        break;
+        case 'ACTIVO':
+            nuevoElemento = { tipo_activo: valor }; 
+            this.activoService.addActivo(nuevoElemento).subscribe(() => this.cargarActivos());
+            break;
+        case 'EDIFICIO':
+            nuevoElemento = { nombre: valor };
+            this.edificioService.addEdificio(nuevoElemento).subscribe(() => this.cargarEdificios());
+            break;
+        case 'SECTOR':
+            nuevoElemento = { nombre: valor };
+            this.sectorService.addSector(nuevoElemento).subscribe(() => this.cargarSectores());
+            break;
+        case 'UBICACION':
+            nuevoElemento = { descripcion: valor };
+            this.ubicacionService.addUbicacion(nuevoElemento).subscribe(() => this.cargarUbicaciones());
+            break;
+        case 'PISO':
+            nuevoElemento = { nombre: valor };
+            this.pisoService.addPiso(nuevoElemento).subscribe(() => this.cargarPisos());
+            break;
     }
 
     this.selectedValues[item.toLowerCase()] = '';
-  }
+}
 
-  eliminarElemento(item: string): void {
+eliminarElemento(item: string): void {
     const valor = this.selectedValues[item.toLowerCase()];
     if (!valor) {
-      alert('Por favor, ingrese un valor antes de eliminar.');
-      return;
+        alert('Por favor, ingrese un valor antes de eliminar.');
+        return;
     }
 
     switch (item) {
-      case 'ACTIVO':
-        this.activoService.deleteActivo(valor).subscribe(() => this.cargarActivos());
-        break;
-      case 'EDIFICIO':
-        this.edificioService.deleteEdificio(valor).subscribe(() => this.cargarEdificios());
-        break;
-      case 'SECTOR':
-        this.sectorService.deleteSector(valor).subscribe(() => this.cargarSectores());
-        break;
-      case 'UBICACION':
-        this.ubicacionService.deleteUbicacion(valor).subscribe(() => this.cargarUbicaciones());
-        break;
-      case 'PISO':
-        this.pisoService.deletePiso(valor).subscribe(() => this.cargarPisos());
-        break;
+        case 'ACTIVO':
+            this.activoService.deleteActivo(valor).subscribe(() => this.cargarActivos()); 
+            break;
+        case 'EDIFICIO':
+            this.edificioService.deleteEdificio(valor).subscribe(() => this.cargarEdificios());
+            break;
+        case 'SECTOR':
+            this.sectorService.deleteSector(valor).subscribe(() => this.cargarSectores());
+            break;
+        case 'UBICACION':
+            this.ubicacionService.deleteUbicacion(valor).subscribe(() => this.cargarUbicaciones());
+            break;
+        case 'PISO':
+            this.pisoService.deletePiso(valor).subscribe(() => this.cargarPisos());
+            break;
     }
 
     this.selectedValues[item.toLowerCase()] = '';
-  }
+}
+
 }
