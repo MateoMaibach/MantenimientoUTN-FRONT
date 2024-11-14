@@ -7,7 +7,7 @@
  <div class="container">
    <nav class="navbar">
      <ul>
-       <li><a class="nav-link" [routerLink]="['/dashboard']">ACTIVOS</a></li>
+       <li><a class="nav-link" [routerLink]="['/dashboard']">GESTOR</a></li>
        <li><a class="nav-link" [routerLink]="['/dashboard-historial']">HISTORIAL</a></li>
        <li><a class="nav-link" [routerLink]="['/dashboard-ot']">ORDENES DE TRABAJO</a></li>
        <li><a class="nav-link" [routerLink]="['/dashboard-op']">OPERARIOS</a></li>
@@ -18,9 +18,14 @@
 
  <div class="container-menu">
   <nav class="navbar-menu">
-    <button #gearButton class="gear-button">⚙️</button>
-    <button #userButton class="user-button">👤</button>
-    <div *ngIf="tooltipVisible" class="tooltip">{{ userName }}</div>
+    <button #gearButton class="gear-button">
+      <img src="assets/buttonoff.svg" alt="Configuración" class="icon">
+  </button>
+  
+  <button #userButton class="user-button" (mouseover)="tooltipVisible = true" (mouseout)="tooltipVisible = false">
+    <img src="assets/usericon.svg" alt="Usuario" class="icon">
+</button>
+<div *ngIf="tooltipVisible" class="tooltip">{{ userName }}</div>
     <div #dropdownMenu class="dropdown-menu">
       <div class="seccionOpciones">
         <select class="selectOpcion" (change)="onOptionSelect($event)">
