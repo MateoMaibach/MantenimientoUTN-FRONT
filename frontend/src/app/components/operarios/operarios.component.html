@@ -1,19 +1,10 @@
-<!-- src/app/components/tareas-operario/tareas-operario.component.html -->
 <div class="container">
-  <div class="operarios-panel">
-    <label for="operarioSelect" class="operarios-label">Seleccione un operario:</label>
-    <select id="operarioSelect" [(ngModel)]="operarioSeleccionado" class="operarios-dropdown">
-      <option value="" disabled selected>Seleccione un operario</option>
-      <option *ngFor="let operario of operarios" [value]="operario.username">
-        {{ operario.username }}
-      </option>
-    </select>
-    <button (click)="cargarOrdenesDelOperario()" class="cargar-tareas-button">Ver Tareas</button>
-  </div>
+  <!-- Mostrar las tareas del operario autenticado -->
+  <div *ngIf="operarioSeleccionado">
+    <h2>Tareas Asignadas para {{ operarioSeleccionado }}</h2>
 
-  <div class="tareas-panel" *ngIf="ordenesTrabajo.length > 0">
-    <h2>Tareas Asignadas</h2>
-    <div class="webcomponent">
+    <!-- Mostrar las órdenes de trabajo si hay alguna asignada -->
+    <div class="tareas-panel" *ngIf="ordenesTrabajo.length > 0">
       <ul class="tareas-list">
         <li *ngFor="let orden of ordenesTrabajo" class="orden-item">
           <div class="orden-cuadro">
@@ -21,38 +12,37 @@
             <p><strong>Fecha:</strong> {{ orden.fecha }}</p>
             <p><strong>Edificio:</strong> {{ orden.edificio_nombre }}</p>
             <p><strong>Activo:</strong> {{ orden.tipo_activo }}</p>
-            <p><strong>Código único:</strong> {{ orden.codigo_unico }}</p>
-            <p><strong>Descripción:</strong></p>
-            <ul>
-              <li *ngFor="let tarea of orden.tareas.split(',')" class="tarea-item">{{ tarea.trim() }}</li>
-            </ul>
+
+            <!-- Mostrar las tareas de la orden -->
+           
             <!-- Botón para ver la orden completa -->
             <button (click)="mostrarOrdenCompleta(orden)" class="ver-orden-completa-button">Ver Orden Completa</button>
           </div>
         </li>
       </ul>
     </div>
-  </div>
 
-  <div *ngIf="ordenesTrabajo.length === 0" class="no-tareas">
-    No hay tareas asignadas para el operario seleccionado.
+    <!-- Mensaje si no hay tareas asignadas -->
+    <div *ngIf="ordenesTrabajo.length === 0" class="no-tareas">
+      No hay tareas asignadas para el operario seleccionado.
+    </div>
   </div>
 
   <!-- Vista completa de la orden seleccionada -->
   <div *ngIf="ordenTrabajoSeleccionada" class="orden-completa-modal" [ngClass]="{'show': ordenTrabajoSeleccionada}">
     <div class="modal-content">
       <span class="close-btn" (click)="cerrarOrdenCompleta()">×</span>
-      <h2>Orden de Trabajo N° {{ ordenTrabajoSeleccionada.OT_num }} </h2>
+      <h2>Orden de Trabajo N° {{ ordenTrabajoSeleccionada.OT_num }}</h2>
       <p><strong>Fecha:</strong> {{ ordenTrabajoSeleccionada.fecha }}</p>
       <p><strong>Edificio:</strong> {{ ordenTrabajoSeleccionada.edificio_nombre }}</p>
       <p><strong>Activo:</strong> {{ ordenTrabajoSeleccionada.tipo_activo }}</p>
       <p><strong>Código único:</strong> {{ ordenTrabajoSeleccionada.codigo_unico }}</p>
-      <p><strong>Descripción:</strong></p>
+
+      <!-- Mostrar las tareas de la orden completa -->
       <ul>
         <li *ngFor="let tarea of ordenTrabajoSeleccionada.tareas.split(',')" class="tarea-item">{{ tarea.trim() }}</li>
       </ul>
-      <p><strong>Observaciones: </strong>{{ordenTrabajoSeleccionada.observacion}}</p>
-      <!-- Agregar más campos según la estructura de tu orden de trabajo -->
+      <p><strong>Observaciones:</strong> {{ ordenTrabajoSeleccionada.observacion }}</p>
     </div>
   </div>
 </div>

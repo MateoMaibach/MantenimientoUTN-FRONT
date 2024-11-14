@@ -1,9 +1,6 @@
-// src/app/components/tareas-operario/tareas-operario.component.ts
 import { Component, OnInit } from '@angular/core';
 import { OrdentrabajoService, OrdenTrabajo } from '../../services/ordentrabajo.service';
-import { OperariosService } from '../../services/operarios.service';
-import { Operario } from '../../models/operario.model';
-
+import { AuthService } from '../../services/login.service'; // Inyectar el servicio de autenticación
 
 @Component({
   selector: 'app-operarios',
@@ -12,50 +9,54 @@ import { Operario } from '../../models/operario.model';
 })
 export class TareasOperarioComponent implements OnInit {
   ordenesTrabajo: OrdenTrabajo[] = [];
-  operarios: Operario[] = [];  // Lista de operarios obtenida desde la base de datos
-  operarioSeleccionado: string = '';
-  ordenTrabajoSeleccionada: OrdenTrabajo | null = null;  // Para almacenar la orden seleccionada y mostrarla completa
+  operarioSeleccionado: string = ''; // Almacenar el nombre del operario
+  ordenTrabajoSeleccionada: OrdenTrabajo | null = null; // Almacenar la orden seleccionada
+  usuarioAutenticado: any = null; // Almacenar los datos del usuario autenticado
 
   constructor(
     private ordentrabajoService: OrdentrabajoService,
-    private operariosService: OperariosService
+    private authService: AuthService // Inyectar el servicio de autenticación
   ) {}
 
   ngOnInit(): void {
-    this.cargarOperarios();  // Cargar la lista de operarios al iniciar el componente
+    // Obtener el operario autenticado
+    this.usuarioAutenticado = this.authService.getCurrentUser();
+    if (this.usuarioAutenticado && this.usuarioAutenticado !== null) {
+      this.operarioSeleccionado = this.usuarioAutenticado; // Usar el username del operario autenticado
+      this.cargarOrdenesDelOperario(); // Cargar las órdenes de trabajo para ese operario
+    } else {
+      // Si no hay operario autenticado, mostrar todas las órdenes
+      this.cargarTodasLasOrdenes();
+    }
   }
 
-  // Método para cargar los operarios desde el backend
-  cargarOperarios(): void {
-    this.operariosService.getOperarios().subscribe(
-      (operarios) => {
-        this.operarios = operarios;
+  // Método para cargar las órdenes de trabajo del operario autenticado
+  cargarOrdenesDelOperario(): void {
+    this.ordentrabajoService.getOrdenesPorOperario(this.operarioSeleccionado).subscribe(
+      (ordenes: OrdenTrabajo[]) => {
+        this.ordenesTrabajo = ordenes;
       },
-      (error) => {
-        console.error('Error al cargar los operarios', error);
+      (error: any) => {
+        console.error('Error al cargar las órdenes de trabajo', error);
       }
     );
   }
 
-  // Método para cargar las tareas del operario seleccionado
-  cargarOrdenesDelOperario(): void {
-    if (this.operarioSeleccionado) {
-      this.ordentrabajoService.getOrdenesPorOperario(this.operarioSeleccionado).subscribe(
-        (ordenes) => {
-          this.ordenesTrabajo = ordenes;
-        },
-        (error) => {
-          console.error('Error al cargar las órdenes de trabajo', error);
-        }
-      );
-    } else {
-      this.ordenesTrabajo = [];
-    }
+  // Método para cargar todas las órdenes de trabajo (por si no hay operario autenticado)
+  cargarTodasLasOrdenes(): void {
+    this.ordentrabajoService.getOrdenesTrabajo().subscribe(
+      (ordenes: OrdenTrabajo[]) => {
+        this.ordenesTrabajo = ordenes;
+      },
+      (error: any) => {
+        console.error('Error al cargar todas las órdenes de trabajo', error);
+      }
+    );
   }
 
   // Método para seleccionar una orden de trabajo y mostrarla completa
   mostrarOrdenCompleta(orden: OrdenTrabajo): void {
-    this.ordenTrabajoSeleccionada = orden;  // Almacena la orden seleccionada
+    this.ordenTrabajoSeleccionada = orden;  // Almacenar la orden seleccionada
   }
 
   // Método para cerrar la vista de la orden completa
