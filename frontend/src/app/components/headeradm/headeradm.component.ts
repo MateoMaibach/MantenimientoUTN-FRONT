@@ -25,7 +25,7 @@ export class HeaderadmComponent implements AfterViewInit {
     private cookieService: CookieService,
     private authService: AuthService
   ) {
-    this.userName = this.authService.getCurrentUser() || 'Usuario'; // Obtén el nombre de usuario
+    this.userName = this.authService.getCurrentUser() || 'Usuario'; 
   }
 
   ngAfterViewInit(): void {
