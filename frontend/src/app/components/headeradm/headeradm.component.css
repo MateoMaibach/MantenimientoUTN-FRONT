@@ -187,5 +187,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0; 
+  padding: 0px; 
+  margin-left: 50px;
+  
 }

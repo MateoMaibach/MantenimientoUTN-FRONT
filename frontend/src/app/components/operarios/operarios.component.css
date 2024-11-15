@@ -19,7 +19,7 @@
   height: 600px;
   display: flex;
   flex-direction: column;
-  overflow: auto; /* Habilitar el scroll */
+  overflow: auto; 
 }
 
 .operarios-panel {
@@ -72,8 +72,8 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 20px;
-  overflow-y: none; /* Scroll específico para tareas */
-  max-height: calc(100% - 100px); /* Limitar la altura de las tareas */
+  overflow-y: none; 
+  max-height: calc(100% - 100px); 
 }
 
 .webcomponent {
@@ -106,7 +106,7 @@
 }
 
 .tareas-list {
-  list-style-type: disc; /* Puntos estándar */
+  list-style-type: disc; 
   padding-left: 20px;
   margin: 0;
   width: 100%;
@@ -128,7 +128,7 @@
   margin-top: 20px;
 }
 
-/* Estilos para el modal de la orden completa */
+
 .orden-completa-modal {
   position: fixed;
   top: 0;
@@ -140,7 +140,7 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  overflow-y: auto;  /* Scroll vertical para contenido largo */
+  overflow-y: auto;  
 }
 
 .modal-content {
@@ -149,8 +149,8 @@
   border-radius: 10px;
   max-width: 800px;
   width: 100%;
-  overflow-y: auto;  /* Habilitar scroll en caso de contenido largo */
-  max-height: 80vh;  /* Limitar la altura máxima */
+  overflow-y: auto;  
+  max-height: 80vh;  
 }
 
 .close-btn {
@@ -166,21 +166,21 @@
   color: #e74c3c;
 }
 
-/* Estilo para el botón de "Ver Orden Completa" */
+
 .ver-orden-completa-button {
-  background: linear-gradient(to bottom, #545454, #2d2d2d);  /* Coincide con los demás botones */
-  color: #ffffff;  /* Color blanco */
-  border-radius: 25px;  /* Bordes redondeados */
-  padding: 10px 20px;  /* Espaciado interno */
-  font-size: 16px;  /* Tamaño de fuente */
-  font-weight: bold;  /* Texto en negrita */
-  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);  /* Sombra del botón */
-  transition: all 0.3s ease;  /* Transición suave para el hover */
-  border: none;  /* Sin borde */
-  cursor: pointer;  /* Cursor de mano al pasar por encima */
+  background: linear-gradient(to bottom, #545454, #2d2d2d); 
+  color: #ffffff;  
+  border-radius: 25px;  
+  padding: 10px 20px;  
+  font-size: 16px;  
+  font-weight: bold;  
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);  
+  transition: all 0.3s ease;  
+  border: none;  
+  cursor: pointer;  
 }
 
 .ver-orden-completa-button:hover {
-  background: linear-gradient(to bottom, #2d2d2d, #545454);  /* Invertir los colores al pasar el cursor */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);  /* Sombra más intensa */
+  background: linear-gradient(to bottom, #2d2d2d, #545454);  
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);  
 }

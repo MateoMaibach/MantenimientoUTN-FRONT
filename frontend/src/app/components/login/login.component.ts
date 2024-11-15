@@ -19,17 +19,17 @@ export class LoginComponent {
       response => {
         console.log('Login exitoso', response);
 
-        // Guardar el token en la cookie ya se realiza en el AuthService
+        
 
-        // Obtener el rol del usuario del token
+        
         const userRole = this.authService.getUserRole();
         console.log('Rol del usuario:', userRole);
 
-        // Redirigir según el rol del usuario
+        
         if (userRole === 'admin') {
-          this.router.navigate(['/dashboard']);  // Redirige al admin al dashboard
+          this.router.navigate(['/dashboard']);  
         } else if (userRole === 'operario') {
-          this.router.navigate(['/dashboard-op']); // Redirige al operario al dashboard-op
+          this.router.navigate(['/dashboard-op']); 
         } else {
           this.errorMessage = 'Rol no reconocido.';
         }

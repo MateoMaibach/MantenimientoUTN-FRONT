@@ -168,13 +168,13 @@ export class OrdenTrabajoComponent implements OnInit {
       fecha: this.selectedFecha,
       observacion: this.observaciones ,
       edificio_nombre: this.selectedEdificio,
-      tarea_descripcion: 'Grupo de tareas', // Descripción general del grupo de tareas
+      tarea_descripcion: 'Grupo de tareas', 
       sector_nombre: this.selectedSector,
       piso_nombre: this.selectedPiso,
       ubicacion_descripcion: this.selectedUbicacion,
       operario_username: this.selectedOperario,
       tipo_activo: this.selectedActivo,
-      tareas: JSON.stringify(this.tareasSeleccionadas.map(tarea => tarea.descripcion)) // Convertir tareas a JSON como string
+      tareas: JSON.stringify(this.tareasSeleccionadas.map(tarea => tarea.descripcion)) 
     };
 
     this.ordentrabajoService.createOrdenTrabajo(ordenTrabajo).subscribe(
