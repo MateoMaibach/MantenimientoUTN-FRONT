@@ -7,42 +7,42 @@ import { DashboardOtComponent } from './pages/dashboard-ot/dashboard-ot.componen
 import { DashboardOpComponent } from './pages/dashboard-op/dashboard-op.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './guards/auth.guard'; 
-import { DashboardInicioComponent } from './pages/dashboard-inicio/dashboard-inicio.component';  // Importa el componente
+import { DashboardInicioComponent } from './pages/dashboard-inicio/dashboard-inicio.component';  
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard-inicio', pathMatch: 'full' },  // Redirige a dashboard-inicio
-  { path: 'login', component: LoginPageComponent },  // Página de login
+  { path: '', redirectTo: '/dashboard-inicio', pathMatch: 'full' },  
+  { path: 'login', component: LoginPageComponent },  
   {
     path: 'dashboard-inicio',
-    component: DashboardInicioComponent,  // Página de inicio del dashboard
-    // No se aplica AuthGuard aquí, ya que es accesible sin autenticación
+    component: DashboardInicioComponent,  
+    
   },
   {
     path: 'dashboard',
     component: DashboardPageComponent,
-    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
+    canActivate: [AuthGuard]  
   },
   {
     path: 'dashboard-historial',
     component: DashboardHistorialComponent,
-    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
+    canActivate: [AuthGuard]  
   },
   {
     path: 'dashboard-ot',
     component: DashboardOtComponent,
-    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
+    canActivate: [AuthGuard]  
   },
   {
     path: 'dashboard-op',
     component: DashboardOpComponent,
-    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
+    canActivate: [AuthGuard]  
   },
   { 
     path: 'register', 
     component: RegisterComponent, 
-    canActivate: [AuthGuard]  // Ruta protegida por AuthGuard
+    canActivate: [AuthGuard]  
   },
-  { path: '**', redirectTo: '/dashboard-inicio' }  // Redirige cualquier ruta no encontrada a dashboard-inicio
+  { path: '**', redirectTo: '/dashboard-inicio' } 
 ];
 
 @NgModule({
