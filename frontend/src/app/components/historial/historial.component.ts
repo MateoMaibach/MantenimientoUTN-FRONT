@@ -146,8 +146,8 @@ export class HistorialComponent implements OnInit {
       this.ordentrabajoService.eliminarOrden(id_orden).subscribe({
         next: () => {
           alert('Orden de trabajo eliminada correctamente');
-          this.ordenSeleccionada = null; // Cerrar el modal
-          this.cargarTodasLasOrdenes(); // Recargar todas las órdenes
+          this.ordenSeleccionada = null; 
+          this.cargarTodasLasOrdenes(); 
         },
         error: (error) => {
           console.error('Error al eliminar la orden de trabajo:', error);

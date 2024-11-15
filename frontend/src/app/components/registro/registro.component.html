@@ -10,14 +10,14 @@
       <div class="rol-label-container"> 
         <span class="rol-label">ROL</span>
         <select id="role" [(ngModel)]="role" name="role" class="rol-dropdown" required>
-          <option value="">Seleccione un rol</option> <!-- Valor por defecto vacío -->
+          <option value="">Seleccione un rol</option> 
           <option value="administrador">admin</option>
           <option value="operario">Operario</option>
         </select>
       </div>
 
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div> <!-- Mensaje de éxito -->
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div> 
 
       <button type="submit" class="login-button">REGISTRAR</button>
     </form>

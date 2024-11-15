@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdentrabajoService, OrdenTrabajo } from '../../services/ordentrabajo.service';
-import { AuthService } from '../../services/login.service'; // Inyectar el servicio de autenticación
+import { AuthService } from '../../services/login.service'; 
 
 @Component({
   selector: 'app-operarios',
@@ -9,28 +9,28 @@ import { AuthService } from '../../services/login.service'; // Inyectar el servi
 })
 export class TareasOperarioComponent implements OnInit {
   ordenesTrabajo: OrdenTrabajo[] = [];
-  operarioSeleccionado: string = ''; // Almacenar el nombre del operario
-  ordenTrabajoSeleccionada: OrdenTrabajo | null = null; // Almacenar la orden seleccionada
-  usuarioAutenticado: any = null; // Almacenar los datos del usuario autenticado
+  operarioSeleccionado: string = ''; 
+  ordenTrabajoSeleccionada: OrdenTrabajo | null = null; 
+  usuarioAutenticado: any = null; 
 
   constructor(
     private ordentrabajoService: OrdentrabajoService,
-    private authService: AuthService // Inyectar el servicio de autenticación
+    private authService: AuthService 
   ) {}
 
   ngOnInit(): void {
-    // Obtener el operario autenticado
+    
     this.usuarioAutenticado = this.authService.getCurrentUser();
     if (this.usuarioAutenticado && this.usuarioAutenticado !== null) {
-      this.operarioSeleccionado = this.usuarioAutenticado; // Usar el username del operario autenticado
-      this.cargarOrdenesDelOperario(); // Cargar las órdenes de trabajo para ese operario
+      this.operarioSeleccionado = this.usuarioAutenticado; 
+      this.cargarOrdenesDelOperario(); 
     } else {
-      // Si no hay operario autenticado, mostrar todas las órdenes
+      
       this.cargarTodasLasOrdenes();
     }
   }
 
-  // Método para cargar las órdenes de trabajo del operario autenticado
+  
   cargarOrdenesDelOperario(): void {
     this.ordentrabajoService.getOrdenesPorOperario(this.operarioSeleccionado).subscribe(
       (ordenes: OrdenTrabajo[]) => {
@@ -42,7 +42,7 @@ export class TareasOperarioComponent implements OnInit {
     );
   }
 
-  // Método para cargar todas las órdenes de trabajo (por si no hay operario autenticado)
+  
   cargarTodasLasOrdenes(): void {
     this.ordentrabajoService.getOrdenesTrabajo().subscribe(
       (ordenes: OrdenTrabajo[]) => {
@@ -54,13 +54,13 @@ export class TareasOperarioComponent implements OnInit {
     );
   }
 
-  // Método para seleccionar una orden de trabajo y mostrarla completa
+  
   mostrarOrdenCompleta(orden: OrdenTrabajo): void {
-    this.ordenTrabajoSeleccionada = orden;  // Almacenar la orden seleccionada
+    this.ordenTrabajoSeleccionada = orden;  
   }
 
-  // Método para cerrar la vista de la orden completa
+  
   cerrarOrdenCompleta(): void {
-    this.ordenTrabajoSeleccionada = null;  // Limpiar la orden seleccionada
+    this.ordenTrabajoSeleccionada = null;  
   }
 }
