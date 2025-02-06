@@ -18,8 +18,8 @@ export class RoleGuard implements CanActivate {
       return true; 
     }
 
-    // Si el rol no es 'operario', redirige a la página de inicio o login
+    
     this.router.navigate(['/login']);
-    return false; // Bloquea el acceso
+    return false; 
   }
 }
