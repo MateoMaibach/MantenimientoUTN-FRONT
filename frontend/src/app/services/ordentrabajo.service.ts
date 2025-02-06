@@ -2,21 +2,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { OrdenTrabajo } from '../models/orden-trabajo.model';
 
-export interface OrdenTrabajo {
-  OT_num?: number;
-  codigo_unico?: any;
-  operario_username: string;
-  fecha: string;
-  observacion: string;
-  edificio_nombre: string;
-  tarea_descripcion: string;
-  sector_nombre: string;
-  piso_nombre: string;
-  ubicacion_descripcion: string;
-  tipo_activo: string;
-  tareas: string; 
-}
 
 @Injectable({
   providedIn: 'root'
@@ -65,3 +52,5 @@ export class OrdentrabajoService {
 
   
 }
+
+

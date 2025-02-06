@@ -72,7 +72,7 @@ export class BuscadorComponent implements OnInit {
   }
 
   cargarEdificios(): void {
-    this.edificioService.GetEdificio().subscribe(
+    this.edificioService.getEdificio().subscribe(
       (data: any[]) => {
         this.edificios = data;
         this.combinarDatos();

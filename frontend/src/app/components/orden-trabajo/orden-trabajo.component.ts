@@ -6,8 +6,16 @@ import { SectorService } from '../../services/sector.service';
 import { PisoService } from '../../services/piso.service';
 import { UbicacionService } from '../../services/ubicacion.service';
 import { OperariosService } from '../../services/operarios.service';
-import { OrdentrabajoService, OrdenTrabajo } from '../../services/ordentrabajo.service';
+import { OrdentrabajoService } from '../../services/ordentrabajo.service';
+import { OrdenTrabajo } from '../../models/orden-trabajo.model';
 import { HttpClient } from '@angular/common/http';
+import { Edificio } from '../../models/edificio.model';
+import { Activo } from '../../models/activo.model';
+import { Tarea } from '../../models/tarea.model';
+import { Sector } from '../../models/sector.model';
+import { Piso } from '../../models/piso.model';
+import { Ubicacion } from '../../models/ubicacion.model';
+import { Operario } from '../../models/operario.model';
 
 @Component({
   selector: 'app-orden-trabajo',
@@ -15,37 +23,36 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./orden-trabajo.component.css']
 })
 export class OrdenTrabajoComponent implements OnInit {
-  edificios: any[] = [];
-  activos: any[] = [];
-  tareas: any[] = [];
-  sectores: any[] = [];
-  pisos: any[] = [];
-  ubicaciones: any[] = [];
-  operarios: any[] = [];
+  edificios: Edificio[] = [];
+  activos: Activo[] = [];
+  tareas: Tarea[] = [];
+  sectores: Sector[] = [];
+  pisos: Piso[] = [];
+  ubicaciones: Ubicacion[] = [];
+  operarios: Operario[] = [];
 
-  selectedEdificio: any;
-  selectedActivo: any;
-  selectedGrupo: any;
-  selectedSector: any;
-  selectedPiso: any;
-  selectedUbicacion: any;
-  selectedOperario: any;
-  tareasSeleccionadas: any[] = [];
+  selectedEdificio: Edificio | null = null;
+  selectedActivo: Activo | null = null;
+  selectedGrupo: string | null = null;
+  selectedSector: Sector | null = null;
+  selectedPiso: Piso | null = null;
+  selectedUbicacion: Ubicacion | null = null;
+  selectedOperario: Operario | null = null;
+  tareasSeleccionadas: Tarea[] = [];
   selectedFecha: string = '';
   observaciones: string = '';
 
   limpiarCampos() {
-    this.selectedFecha = '';
-    this.selectedEdificio = '';
-    this.selectedActivo = '';
-    this.selectedGrupo = '';
-    this.selectedSector = '';
-    this.selectedPiso = '';
-    this.selectedUbicacion = '';
-    this.selectedOperario = '';
-    this.tareasSeleccionadas = [];
+    this.selectedFecha = '';  
+    this.selectedEdificio = null; 
+    this.selectedActivo = null;
+    this.selectedGrupo = null;  
+    this.selectedSector = null;
+    this.selectedPiso = null;
+    this.selectedUbicacion = null;
+    this.selectedOperario = null;
+    this.tareasSeleccionadas = [];  
   }
-  
 
 
   constructor(
@@ -72,8 +79,8 @@ export class OrdenTrabajoComponent implements OnInit {
 
   buscarTareas() {
     if (this.selectedActivo && this.selectedGrupo) {
-      this.tareaService.getTareasPorActivoGrupo(this.selectedActivo, this.selectedGrupo).subscribe(
-        (data: any) => {
+      this.tareaService.getTareasPorActivoGrupo(this.selectedActivo.tipo_activo, this.selectedGrupo).subscribe(
+        (data: Tarea[]) => {
           this.tareasSeleccionadas = data;
           console.log('Tareas encontradas:', data);
         },
@@ -87,8 +94,8 @@ export class OrdenTrabajoComponent implements OnInit {
   }
 
   cargarEdificios(): void {
-    this.edificioService.GetEdificio().subscribe(
-      (data: any[]) => {
+    this.edificioService.getEdificio().subscribe(
+      (data:Edificio[]) => {
         this.edificios = data;
       },
       error => {
@@ -99,7 +106,7 @@ export class OrdenTrabajoComponent implements OnInit {
 
   cargarActivos(): void {
     this.activoService.getActivo().subscribe(
-      (data: any[]) => {
+      (data: Activo[]) => {
         this.activos = data;
       },
       error => {
@@ -109,8 +116,8 @@ export class OrdenTrabajoComponent implements OnInit {
   }
 
   cargarTareas(): void {
-    this.tareaService.getTarea().subscribe(
-      (data: any[]) => {
+    this.tareaService.getTareas().subscribe(
+      (data: Tarea[]) => {
         this.tareas = data;
       },
       error => {
@@ -121,7 +128,7 @@ export class OrdenTrabajoComponent implements OnInit {
 
   cargarSectores(): void {
     this.sectorService.getSector().subscribe(
-      (data: any[]) => {
+      (data: Sector[]) => {
         this.sectores = data;
       },
       error => {
@@ -132,7 +139,7 @@ export class OrdenTrabajoComponent implements OnInit {
 
   cargarPisos(): void {
     this.pisoService.getPiso().subscribe(
-      (data: any[]) => {
+      (data: Piso[]) => {
         this.pisos = data;
       },
       error => {
@@ -143,7 +150,7 @@ export class OrdenTrabajoComponent implements OnInit {
 
   cargarUbicaciones(): void {
     this.ubicacionService.getUbicacion().subscribe(
-      (data: any[]) => {
+      (data: Ubicacion[]) => {
         this.ubicaciones = data;
       },
       error => {
@@ -154,7 +161,7 @@ export class OrdenTrabajoComponent implements OnInit {
 
   cargarOperarios(): void {
     this.operariosService.getOperarios().subscribe(
-      (data: any[]) => {
+      (data: Operario[]) => {
         this.operarios = data;
       },
       error => {
@@ -164,16 +171,21 @@ export class OrdenTrabajoComponent implements OnInit {
   }
 
   cargarOrdenTrabajo() {
+    if (!this.selectedEdificio || !this.selectedActivo || !this.selectedSector || !this.selectedPiso || !this.selectedUbicacion || !this.selectedOperario) {
+      alert("Todos los campos deben estar seleccionados.");
+      return;
+    }
+
     const ordenTrabajo: OrdenTrabajo = {
       fecha: this.selectedFecha,
       observacion: this.observaciones ,
-      edificio_nombre: this.selectedEdificio,
+      edificio_nombre: this.selectedEdificio.nombre,
       tarea_descripcion: 'Grupo de tareas', 
-      sector_nombre: this.selectedSector,
-      piso_nombre: this.selectedPiso,
-      ubicacion_descripcion: this.selectedUbicacion,
-      operario_username: this.selectedOperario,
-      tipo_activo: this.selectedActivo,
+      sector_nombre: this.selectedSector.nombre,
+      piso_nombre: this.selectedPiso.nombre,
+      ubicacion_descripcion: this.selectedUbicacion.descripcion,
+      operario_username: this.selectedOperario.username,
+      tipo_activo: this.selectedActivo.tipo_activo,
       tareas: JSON.stringify(this.tareasSeleccionadas.map(tarea => tarea.descripcion)) 
     };
 

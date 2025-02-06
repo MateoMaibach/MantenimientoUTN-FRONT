@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdentrabajoService, OrdenTrabajo } from '../../services/ordentrabajo.service';
+import { OrdentrabajoService} from '../../services/ordentrabajo.service';
+import { OrdenTrabajo } from '../../models/orden-trabajo.model';
 import { AuthService } from '../../services/login.service'; 
 
 @Component({

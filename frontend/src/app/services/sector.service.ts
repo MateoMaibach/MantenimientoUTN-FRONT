@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Sector } from '../models/sector.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,17 @@ export class SectorService {
   constructor(private http: HttpClient) { }
 
   
-  getSector(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
+  getSector(): Observable<Sector[]> {
+    return this.http.get<Sector[]>(`${this.apiUrl}`);
   }
 
   
-  addSector(sector: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, sector);
+  addSector(sector: any): Observable<Sector> {
+    return this.http.post<Sector>(`${this.apiUrl}`, sector);
   }
 
   
-  deleteSector(nombre: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}?nombre=${nombre}`);
+  deleteSector(nombre: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}?nombre=${nombre}`);
   }
 }

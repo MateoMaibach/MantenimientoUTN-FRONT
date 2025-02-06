@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Tarea } from '../models/tarea.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareaService {
+  private apiUrl = 'http://localhost:3000/api/tarea';
 
-  private apiUrl = 'http://localhost:3000/api/tareas'; 
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  getTareas(): Observable<Tarea[]> {
+    return this.http.get<Tarea[]>(this.apiUrl);
+  }
 
-  
-  getTarea(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  createTarea(tarea: Tarea): Observable<Tarea> {
+    return this.http.post<Tarea>(this.apiUrl, tarea);
   }
 
   getTareasFormateadas(tareas: string[]): string {
