@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Piso } from '../models/piso.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +13,17 @@ export class PisoService {
   constructor(private http: HttpClient) { }
 
   
-  getPiso(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
+  getPiso(): Observable<Piso[]> {
+    return this.http.get<Piso[]>(this.apiUrl);
   }
 
   
-  addPiso(piso: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, piso);
+  addPiso(piso: Piso): Observable<Piso> {
+    return this.http.post<Piso>(this.apiUrl, piso);
   }
 
   
-  deletePiso(nombre: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}?nombre=${nombre}`);
-  
+  deletePiso(nombre: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}?nombre=${nombre}`);
   }
 }
